@@ -2,7 +2,6 @@ package abbonamento;
 
 import javax.persistence.EntityManager;
 
-import rivenditore.Rivenditore_autorizzato;
 import tessera.Tessera;
 import utils.JpaUtil;
 
@@ -31,10 +30,12 @@ public class AbbonamentoDAO {
 		return e;
 	}
 
-	public static Rivenditore_autorizzato findRivenditore(Integer id) {
+
+
+	public static void removeAbbonamento(Abbonamento e) {
 		em.getTransaction().begin();
-		Rivenditore_autorizzato e = em.find(Rivenditore_autorizzato.class, id);
+		em.remove(e);
 		em.getTransaction().commit();
-		return e;
-	}
+		System.out.println("Abbonamento eliminato!");
+	};
 }

@@ -40,7 +40,6 @@ public class Tessera {
 
 	public void setData_inizio_abbonamento(LocalDate data_inizio_abbonamento) {
 		this.data_inizio_abbonamento = data_inizio_abbonamento;
-		// this.setData_fine_abbonamento(data_inizio_abbonamento.plusYears(1));
 	}
 
 	public LocalDate getData_fine_abbonamento() {
@@ -58,6 +57,7 @@ public class Tessera {
 	public void setUtente(Utente utente) {
 		this.utente = utente;
 	}
+
 
 	@Override
 	public String toString() {

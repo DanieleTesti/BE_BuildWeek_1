@@ -8,8 +8,8 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
-import biglietto.BigliettoDAO;
 import rivenditore.Distributore_Automatico;
+import rivenditore.RivenditoreDAO;
 import rivenditore.Rivenditore_autorizzato;
 import tessera.Tessera;
 import utente.Utente;
@@ -51,16 +51,15 @@ public class Main {
 		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 3, 3));
 		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Settimanale);
 		abb1.setTessera(AbbonamentoDAO.findTessera(1));
-		abb1.setRivenditore(AbbonamentoDAO.findRivenditore(1));
+		abb1.setRivenditore(RivenditoreDAO.findRivenditore(1));
 		// AbbonamentoDAO.salvaAbbonamento(abb1);
 
 		Biglietto b1 = new Biglietto();
-		// b1.setUtente(u2);
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
-		b1.setRivenditore(AbbonamentoDAO.findRivenditore(1));
-		BigliettoDAO.salvaBiglietto(b1);
+		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
+		// BigliettoDAO.salvaBiglietto(b1);
 
-		// System.out.println(UtenteDAO.findUtente(u1));
+
 
 	}
 

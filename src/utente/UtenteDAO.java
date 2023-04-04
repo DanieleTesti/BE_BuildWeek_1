@@ -31,4 +31,11 @@ public class UtenteDAO {
 		em.getTransaction().commit();
 		return e;
 	}
+
+	public static void removeUtente(Utente e) {
+		em.getTransaction().begin();
+		em.remove(e);
+		em.getTransaction().commit();
+		System.out.println("Utente eliminato!");
+	};
 }

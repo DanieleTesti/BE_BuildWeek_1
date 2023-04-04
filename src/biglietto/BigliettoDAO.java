@@ -22,5 +22,11 @@ public class BigliettoDAO {
 		}
 	}
 
+	public static void removeBiglietto(Biglietto e) {
+		em.getTransaction().begin();
+		em.remove(e);
+		em.getTransaction().commit();
+		System.out.println("Biglietto eliminato!");
+	};
 
 }

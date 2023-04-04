@@ -22,10 +22,11 @@ public class TesseraDAO {
 		}
 	}
 
-//		em.getTransaction().begin();
-//		em.persist(t);
-//		em.getTransaction().commit();
-//		System.out.println("Tessera Salvata");
-//		em.close();
-//	}
+	public static void removeTessera(Tessera e) {
+		em.getTransaction().begin();
+		em.remove(e);
+		em.getTransaction().commit();
+		System.out.println("Tessera eliminato!");
+	};
+
 }

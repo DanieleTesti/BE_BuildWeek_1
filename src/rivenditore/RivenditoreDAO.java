@@ -37,4 +37,25 @@ public class RivenditoreDAO {
 	}
 
 
+	public static void removeRivenditore(Rivenditore_autorizzato e) {
+		em.getTransaction().begin();
+		em.remove(e);
+		em.getTransaction().commit();
+		System.out.println("Rivenditore autorizzato eliminato!");
+	};
+
+	public static void removeDistributore(Distributore_Automatico e) {
+		em.getTransaction().begin();
+		em.remove(e);
+		em.getTransaction().commit();
+		System.out.println("Distributore Automatico eliminato!");
+	};
+
+	public static Rivenditore_autorizzato findRivenditore(Integer id) {
+		em.getTransaction().begin();
+		Rivenditore_autorizzato e = em.find(Rivenditore_autorizzato.class, id);
+		em.getTransaction().commit();
+		return e;
+	}
+
 }
