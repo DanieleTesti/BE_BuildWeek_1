@@ -21,4 +21,18 @@ public class RivenditoreDAO {
 			em.close();
 		}
 	}
+
+	public static void salvaDistributore(Distributore_Automatico da) {
+		try {
+			em.getTransaction().begin();
+			em.persist(da);
+			em.getTransaction().commit();
+			System.out.println("Distributore Automatico Salvato");
+		} catch (Exception e) {
+			System.out.println(e);
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+	}
 }

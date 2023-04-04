@@ -13,13 +13,14 @@ import utils.JpaUtil;
 
 public class Main {
 	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+
 	public static void main(String[] args) {
-		
+
 		Utente u1 = new Utente();
 		u1.setCognome("Rossi");
 		u1.setNome("Mario");
 //		UtenteDAO.salvaUtente(u1);
-		
+
 		Utente u2 = new Utente();
 		u2.setCognome("Flavio");
 		u2.setNome("Verdi");
@@ -32,10 +33,11 @@ public class Main {
 		Rivenditore_autorizzato r1 = new Rivenditore_autorizzato();
 		// RivenditoreDAO.salvaRivenditore(r1);
 
-		Distributore_Automatico da1 = new Distributore_Automatico();
-		RivenditoreDAO.salvaRivenditore(da1);
+		Distributore_Automatico da2 = new Distributore_Automatico();
+		da2.setFuori_servizio(true);
+		RivenditoreDAO.salvaDistributore(da2);
 
-		//Abbonamento abb= new Abbonamento();
+		// Abbonamento abb= new Abbonamento();
 	}
 
 }
