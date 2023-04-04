@@ -1,13 +1,9 @@
 package rivenditore;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
-
-import abbonamento.Abbonamento;
-import biglietto.Biglietto;
 
 @Entity
 @NamedQuery(name = "Distributore_Automatico.findAll", query = "SELECT a FROM Distributore_Automatico a")
@@ -19,12 +15,6 @@ public class Distributore_Automatico extends Rivenditore_autorizzato implements 
 	}
 
 	public void setFuori_servizio(boolean fuori_servizio) {
-		this.fuori_servizio = fuori_servizio;
-	}
-
-	public Distributore_Automatico(List<Abbonamento> abbonamenti, List<Biglietto> biglietti,
-			boolean fuori_servizio) {
-		super(abbonamenti, biglietti);
 		this.fuori_servizio = fuori_servizio;
 	}
 
