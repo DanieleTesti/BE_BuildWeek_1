@@ -21,4 +21,11 @@ public class TesseraDAO {
 			em.close();
 		}
 	}
+
+//		em.getTransaction().begin();
+//		em.persist(t);
+//		em.getTransaction().commit();
+//		System.out.println("Tessera Salvata");
+//		em.close();
+//	}
 }

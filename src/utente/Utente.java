@@ -19,6 +19,10 @@ public class Utente {
 		return id;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -41,6 +45,10 @@ public class Utente {
 		this.cognome = cognome;
 	}
 
+	@Override
+	public String toString() {
+		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + "]";
+	}
 
 	public Utente() {
 		super();

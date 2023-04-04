@@ -8,7 +8,7 @@ public class UtenteDAO {
 
 	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
-	public static void salvaUtente(Utente u) {
+	public static Utente salvaUtente(Utente u) {
 		try {
 			em.getTransaction().begin();
 			em.persist(u);
@@ -20,5 +20,27 @@ public class UtenteDAO {
 		} finally {
 			em.close();
 		}
+		return u;
 	}
+
+	public static Utente cercaUtente(Integer id) {
+		try {
+			em.getTransaction().begin();
+			Utente u = em.find(Utente.class, id);
+			return u;
+			// em.getTransaction().commit();
+		} finally {
+			em.close();
+		}
+	}
+//		try {
+//			Utente utente = em.find(Utente.class, id);
+//			return utente;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			em.close();
+//		}
+//		return null;
+//	}
 }
