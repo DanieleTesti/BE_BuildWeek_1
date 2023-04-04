@@ -35,4 +35,6 @@ public class RivenditoreDAO {
 			em.close();
 		}
 	}
+
+
 }

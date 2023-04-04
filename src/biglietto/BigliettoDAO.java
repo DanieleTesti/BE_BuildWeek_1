@@ -21,4 +21,6 @@ public class BigliettoDAO {
 			em.close();
 		}
 	}
+
+
 }

@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 
 import utils.JpaUtil;
 
+
 public class UtenteDAO {
 
 	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();

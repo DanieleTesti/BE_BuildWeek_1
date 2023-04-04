@@ -8,7 +8,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+
+import rivenditore.Rivenditore_autorizzato;
+import tessera.Tessera;
 
 @Entity
 @NamedQuery(name = "Abbonamento.findAll", query = "SELECT a FROM Abbonamento a")
@@ -18,10 +22,10 @@ public class Abbonamento {
 		private Integer id;
 		@Enumerated(EnumType.STRING)
 		private Tipologia_abbonamento tipologia_abbonamento;
-//		@ManyToOne
-		private Integer tessera;
-		// @ManyToOne
-		private Integer rivenditore;
+		@ManyToOne
+		private Tessera tessera;
+		@ManyToOne
+		private Rivenditore_autorizzato rivenditore;
 
 		private LocalDate data_inizio_abbonamento;
 		private LocalDate data_fine_abbonamento;
@@ -77,20 +81,20 @@ public class Abbonamento {
 			this.tipologia_abbonamento = tipologia_abbonamento;
 		}
 
-		public Integer getTessera() {
+		public Tessera getTessera() {
 			return tessera;
 		}
 
-		public void setTessera(Integer tessera) {
+		public void setTessera(Tessera tessera) {
 			this.tessera = tessera;
 		}
 
-		public Integer getRivenditore() {
+		public Rivenditore_autorizzato getRivenditore() {
 			return rivenditore;
 		}
 
-		public void setRivenditore(Integer rivenditore) {
-			this.rivenditore = rivenditore;
+		public void setRivenditore(Rivenditore_autorizzato rivenditore_autorizzato) {
+			this.rivenditore = rivenditore_autorizzato;
 		}
 
 		@Override
@@ -99,5 +103,6 @@ public class Abbonamento {
 					+ ", rivenditore=" + rivenditore + ", data_inizio_abbonamento=" + data_inizio_abbonamento
 					+ ", data_fine_abbonamento=" + data_fine_abbonamento + "]";
 		}
+
 
 }
