@@ -18,29 +18,16 @@ public class UtenteDAO {
 			System.out.println(e);
 			em.getTransaction().rollback();
 		} finally {
-			em.close();
+//			em.close();
 		}
 		return u;
 	}
 
-	public static Utente cercaUtente(Integer id) {
-		try {
-			em.getTransaction().begin();
-			Utente u = em.find(Utente.class, id);
-			return u;
-			// em.getTransaction().commit();
-		} finally {
-			em.close();
-		}
+
+	public static Utente findUtente(Integer id) {
+		em.getTransaction().begin();
+		Utente e = em.find(Utente.class, id);
+		em.getTransaction().commit();
+		return e;
 	}
-//		try {
-//			Utente utente = em.find(Utente.class, id);
-//			return utente;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			em.close();
-//		}
-//		return null;
-//	}
 }

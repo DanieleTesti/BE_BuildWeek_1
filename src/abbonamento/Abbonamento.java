@@ -8,11 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-
-import rivenditore.Rivenditore_autorizzato;
-import tessera.Tessera;
 
 @Entity
 @NamedQuery(name = "Abbonamento.findAll", query = "SELECT a FROM Abbonamento a")
@@ -22,10 +18,10 @@ public class Abbonamento {
 		private Integer id;
 		@Enumerated(EnumType.STRING)
 		private Tipologia_abbonamento tipologia_abbonamento;
-		@ManyToOne
-		private Tessera tessera;
-		@ManyToOne
-		private Rivenditore_autorizzato rivenditore;
+//		@ManyToOne
+		private Integer tessera;
+		// @ManyToOne
+		private Integer rivenditore;
 
 		private LocalDate data_inizio_abbonamento;
 		private LocalDate data_fine_abbonamento;
@@ -50,20 +46,20 @@ public class Abbonamento {
 			super();
 		}
 
-		public Abbonamento(Tipologia_abbonamento tipologia_abbonamento, Tessera tessera,
-				Rivenditore_autorizzato rivenditore, LocalDate data_inizio_abbonamento) {
-			super();
-			this.tipologia_abbonamento = tipologia_abbonamento;
-			this.tessera = tessera;
-			this.rivenditore = rivenditore;
-			this.data_inizio_abbonamento = data_inizio_abbonamento;
-
-			if (tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
-				data_fine_abbonamento = data_inizio_abbonamento.plusDays(7);
-			} else if (tipologia_abbonamento == Tipologia_abbonamento.Mensile) {
-				data_fine_abbonamento = data_inizio_abbonamento.plusMonths(1);
-			}
-		}
+//		public Abbonamento(Tipologia_abbonamento tipologia_abbonamento, Tessera tessera,
+//				Rivenditore_autorizzato rivenditore, LocalDate data_inizio_abbonamento) {
+//			super();
+//			this.tipologia_abbonamento = tipologia_abbonamento;
+//			this.tessera = tessera;
+//			this.rivenditore = rivenditore;
+//			this.data_inizio_abbonamento = data_inizio_abbonamento;
+//
+//			if (tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
+//				data_fine_abbonamento = data_inizio_abbonamento.plusDays(7);
+//			} else if (tipologia_abbonamento == Tipologia_abbonamento.Mensile) {
+//				data_fine_abbonamento = data_inizio_abbonamento.plusMonths(1);
+//			}
+//		}
 
 		public Integer getId() {
 			return id;
@@ -81,19 +77,19 @@ public class Abbonamento {
 			this.tipologia_abbonamento = tipologia_abbonamento;
 		}
 
-		public Tessera getTessera() {
+		public Integer getTessera() {
 			return tessera;
 		}
 
-		public void setTessera(Tessera tessera) {
+		public void setTessera(Integer tessera) {
 			this.tessera = tessera;
 		}
 
-		public Rivenditore_autorizzato getRivenditore() {
+		public Integer getRivenditore() {
 			return rivenditore;
 		}
 
-		public void setRivenditore(Rivenditore_autorizzato rivenditore) {
+		public void setRivenditore(Integer rivenditore) {
 			this.rivenditore = rivenditore;
 		}
 
