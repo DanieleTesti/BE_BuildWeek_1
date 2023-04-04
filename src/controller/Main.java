@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 
+import rivenditore.Distributore_Automatico;
+import rivenditore.RivenditoreDAO;
+import rivenditore.Rivenditore_autorizzato;
 import tessera.Tessera;
-import tessera.TesseraDAO;
 import utente.Utente;
 import utils.JpaUtil;
 
@@ -23,9 +25,15 @@ public class Main {
 		u2.setNome("Verdi");
 
 		Tessera t1 = new Tessera();
-		t1.setUtente(u2);
+		t1.setUtente(u1);
 		t1.setData_inizio_abbonamento(LocalDate.of(2022, 5, 3));
-		TesseraDAO.salvaTessera(t1);
+//		TesseraDAO.salvaTessera(t1);
+
+		Rivenditore_autorizzato r1 = new Rivenditore_autorizzato();
+		// RivenditoreDAO.salvaRivenditore(r1);
+
+		Distributore_Automatico da1 = new Distributore_Automatico();
+		RivenditoreDAO.salvaRivenditore(da1);
 
 		//Abbonamento abb= new Abbonamento();
 	}

@@ -27,9 +27,8 @@ public class Tessera {
 			 {
 		super();
 		this.data_inizio_abbonamento = data_inizio_abbonamento;
-		this.setData_fine_abbonamento(data_inizio_abbonamento);
+		this.setData_inizio_abbonamento(data_inizio_abbonamento);
 		this.utente = utente;
-
 	}
 
 	public Tessera() {
@@ -50,12 +49,8 @@ public class Tessera {
 
 	public void setData_inizio_abbonamento(LocalDate data_inizio_abbonamento) {
 		this.data_inizio_abbonamento = data_inizio_abbonamento;
-		setData_fine_abbonamento(data_inizio_abbonamento);
+		this.setData_fine_abbonamento(data_inizio_abbonamento.plusYears(1));
 	}
-
-//	public void setData_fine_abbonamento(LocalDate data_inizio_abbonamento) {
-//		this.data_fine_abbonamento = data_inizio_abbonamento.plusYears(1);
-//	}
 
 	public LocalDate getData_fine_abbonamento() {
 		return data_fine_abbonamento;
@@ -75,8 +70,8 @@ public class Tessera {
 				+ data_fine_abbonamento + ", utente=" + utente + "]";
 	}
 	
-	public void setData_fine_abbonamento(LocalDate data_inizio_abbonamento) {
-		this.data_fine_abbonamento = data_inizio_abbonamento.plusYears(1);
+	public void setData_fine_abbonamento(LocalDate data_fine_abbonamento) {
+		this.data_fine_abbonamento = data_fine_abbonamento;
 	}
 	
 }
