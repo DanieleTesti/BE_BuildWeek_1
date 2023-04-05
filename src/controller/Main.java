@@ -21,6 +21,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		//CREAZIONE NUOVI UTENTI
 		Utente u1 = new Utente();
 		u1.setCognome("Rossi");
 		u1.setNome("Mario");
@@ -39,7 +40,9 @@ public class Main {
 		t1.setData_inizio_abbonamento(LocalDate.of(2022, 5, 3));
 		t1.setData_fine_abbonamento(LocalDate.of(2023, 5, 3));
 		// TesseraDAO.salvaTessera(t1);
-
+		
+		//CREAZIONE NUOVI RIVENDITORI
+		
 		Rivenditore_autorizzato r1 = new Rivenditore_autorizzato();
 		// RivenditoreDAO.salvaRivenditore(r1);
 
@@ -47,6 +50,7 @@ public class Main {
 		// da2.setFuori_servizio(true);
 		// RivenditoreDAO.salvaDistributore(da2);
 
+		//CREAZIONE NUOVI ABBONAMENTI
 		Abbonamento abb1 = new Abbonamento();
 		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 3, 3));
 		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Settimanale);
@@ -54,6 +58,7 @@ public class Main {
 		abb1.setRivenditore(RivenditoreDAO.findRivenditore(1));
 		// AbbonamentoDAO.salvaAbbonamento(abb1);
 
+		//CREAZIONE NUOVI BIGLIETTI
 		Biglietto b1 = new Biglietto();
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));

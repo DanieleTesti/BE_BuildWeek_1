@@ -2,6 +2,8 @@ package biglietto;
 
 import javax.persistence.EntityManager;
 
+import org.hibernate.Query;
+
 import utils.JpaUtil;
 
 public class BigliettoDAO {
@@ -28,5 +30,6 @@ public class BigliettoDAO {
 		em.getTransaction().commit();
 		System.out.println("Biglietto eliminato!");
 	};
-// QUESTA E' UNA PROVA DI FEDE
+
+	
 }
