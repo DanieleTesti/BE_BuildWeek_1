@@ -12,15 +12,15 @@ import javax.persistence.Id;
 public abstract class Mezzo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
-	Integer capienza;
-	Boolean inServizio = true;
-	Period periodo_servizio;
-	Period periodo_manutenzione;
-	LocalDate inizio_manutenzione;
-	LocalDate fine_manutenzione;
-	LocalDate inizio_servizio;
-	LocalDate fine_servizio;
+	private Long id;
+	private Integer capienza;
+	private Boolean inServizio = true;
+	private Period periodo_servizio;
+	private Period periodo_manutenzione;
+	private LocalDate inizio_manutenzione;
+	private LocalDate fine_manutenzione;
+	private LocalDate inizio_servizio;
+	private LocalDate fine_servizio;
 
 	// costruttore vuoto
 	public Mezzo() {
