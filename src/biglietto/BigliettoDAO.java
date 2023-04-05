@@ -28,5 +28,5 @@ public class BigliettoDAO {
 		em.getTransaction().commit();
 		System.out.println("Biglietto eliminato!");
 	};
-
+// QUESTA E' UNA PROVA DI FEDE
 }
