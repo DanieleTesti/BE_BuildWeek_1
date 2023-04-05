@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Inheritance (strategy = IneheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Mezzi")
+
 public abstract class Mezzo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

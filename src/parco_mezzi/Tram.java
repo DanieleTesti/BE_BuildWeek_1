@@ -1,9 +1,13 @@
 package parco_mezzi;
 
-public class Tram  extends Mezzo {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
-	public Tram() {
-		Long id;
+@Entity
+@DiscriminatorValue("tram")
+public class Tram extends Mezzo {
+	
+	public Tram() {		
 	}
 
 }
