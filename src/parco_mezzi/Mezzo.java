@@ -3,13 +3,18 @@ package parco_mezzi;
 import java.time.LocalDate;
 import java.time.Period;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import biglietto.Biglietto;
 
 @Entity
-@Inheritance (strategy = IneheritanceType.SINGLE_TABLE)
+@Inheritance( strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Mezzi")
 
 public abstract class Mezzo {
@@ -24,6 +29,7 @@ public abstract class Mezzo {
 	private LocalDate fine_manutenzione;
 	private LocalDate inizio_servizio;
 	private LocalDate fine_servizio;
+	private int numeroBigliettiVidimati;
 
 	// costruttore vuoto
 	public Mezzo() {
@@ -95,6 +101,11 @@ public abstract class Mezzo {
 		return inServizio;
 	}
 	
+	public int getNumeroBigliettiVidimati() {
+		return numeroBigliettiVidimati;
+	}
+
+	
 	// cambio stato del servizio (in servizio - manutenzione)	
 	public void setServizio(Boolean servizio) {
 		this.inServizio = servizio;
@@ -149,6 +160,18 @@ public abstract class Mezzo {
 	}
 	
 	
+	 public void vidimaBiglietto (Biglietto b){
+		   b.setVidimato(!b.getVidimato()); 
+		   System.out.println(b);
+		   IncContatoreBiglietti(numeroBigliettiVidimati);
+		 }
+	 
+	 public int IncContatoreBiglietti(int numB){
+		    numB ++;
+		    return numB;
+		  }
+    
+	
 	
 	@Override
 	public String toString() {
@@ -157,5 +180,7 @@ public abstract class Mezzo {
 				+ inizio_manutenzione + ", fine_manutenzione=" + fine_manutenzione + ", inizio_servizio="
 				+ inizio_servizio + ", fine_servizio=" + fine_servizio + "]";
 	}
+	
+	
 
 }

@@ -24,6 +24,8 @@ public class Biglietto {
 	@ManyToOne
 	private Rivenditore_autorizzato rivenditore;
 	private LocalDate data_emissione;
+	private boolean bigliettoVidimato = false;
+	
 
 	public Biglietto(boolean scaduto, Utente utente, Rivenditore_autorizzato rivenditore, LocalDate data_emissione) {
 		super();
@@ -72,11 +74,21 @@ public class Biglietto {
 	public void setData_emissione(LocalDate data_emissione) {
 		this.data_emissione = data_emissione;
 	}
+	
+	public void setVidimato(boolean vidimato) {
+		this.bigliettoVidimato = vidimato;
+	}
+	
+	public Boolean getVidimato() {
+		return bigliettoVidimato;
+	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "Biglietto [ id=" + id + ", scaduto=" + scaduto + ", utente=" + utente + ", rivenditore=" + rivenditore
-				+ ", data_emissione=" + data_emissione + "]";
+		return "Biglietto [id=" + id + ", scaduto=" + scaduto + ", utente=" + utente + ", rivenditore=" + rivenditore
+				+ ", data_emissione=" + data_emissione + ", bigliettoVidimato=" + bigliettoVidimato + "]";
 	}
 	
 }

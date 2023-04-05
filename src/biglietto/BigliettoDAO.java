@@ -1,8 +1,7 @@
 package biglietto;
 
 import javax.persistence.EntityManager;
-
-import org.hibernate.Query;
+import javax.persistence.Query;
 
 import utils.JpaUtil;
 
@@ -30,6 +29,16 @@ public class BigliettoDAO {
 		em.getTransaction().commit();
 		System.out.println("Biglietto eliminato!");
 	};
+	
+	/*public static int findBigliettiVidimati() {
+		   	
+	    Query q = em.createQuery("SELECT COUNT b FROM Biglietto b WHERE b.bigliettoVidimato = :t ");
+		q.setParameter ("t", true);
+		System.out.println(q);
+		return (int) q.getSingleResult();
+			
+		}*/
+		
 
 	
 }

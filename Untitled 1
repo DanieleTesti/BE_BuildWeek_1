@@ -19,7 +19,39 @@ capienza ( = numero di posti)
 
 calcolo periodo manutenzione
 
+
 vidima i biglietti
 conteggio numero biglietti vidimati per mezzo
 boolean vidimato: T/F
 counter ++
+
+--------
+- Quando un biglietto viene vidimato su un mezzo esso deve essere annullato:
+  
+ input Biglietto -> vidimo biglietto (annullo il biglietto) -> output vuoto;
+ 
+ public void vidimaBiglietto (Biglietto b){
+   b.setBoolean(true); 
+ }
+ 
+  
+  
+- Deve essere possibile acquisire il numero di biglietti vidimati sul mezzo:
+
+  input numeroBigliettiVidimati->  implementa di 1 la proprietà di mezzo    ->  output numeri biglietti vidimati;
+  
+  private int numeroBigliettiVidimati;
+  
+  
+  public int contatoreBiglietti(int numB){
+    
+    numB ++;
+    return numB;
+  }
+ 
+ 
+- Ogni biglietto può essere vidimato sia su un autobus che su un tram e deve essere 
+  possibile risalire su quale mezzo esso è stato vidimato 
+   
+   
+- oltre a capire su quale mezzo è stato vidimato ci deve essere possibile sapere i numero di biglietti vidimati in un certo periodo di tempo
