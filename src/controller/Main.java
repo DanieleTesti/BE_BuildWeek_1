@@ -8,6 +8,7 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
+import parco_mezzi.Mezzo;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
 import rivenditore.Rivenditore_autorizzato;
@@ -64,7 +65,8 @@ public class Main {
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
 		// BigliettoDAO.salvaBiglietto(b1);
 
-
+		// Imposto un periodo di servizio per un mezzo (formato: YYYY, M, D / inizio - fine)
+		Mezzo.getPeriodoServizio(LocalDate.of(2023, 4, 14), LocalDate.of(2023, 6, 4));
 
 	}
 
