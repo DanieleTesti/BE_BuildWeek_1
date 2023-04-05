@@ -1,0 +1,25 @@
+05/04 BW
+
+Implementare sistema parco mezzi
+Ci sono 2 mezzi: autobus e tram
+
+Cose in comune: servizio/non servizio
+
+boolean inServizio
+
+Il mezzo verifica se è in servizio (è in servizio?T/F)
+se il mezzo è in manutenzione --> data inizio e data fine
+associo stato manutenzione con data inizio e fine
+al cambio del booleano si registra data inizio o data fine manutenzione
+al cambio del booleano si registra data inizio o data fine in servizio
+
+
+
+capienza ( = numero di posti)
+
+calcolo periodo manutenzione
+
+vidima i biglietti
+conteggio numero biglietti vidimati per mezzo
+boolean vidimato: T/F
+counter ++

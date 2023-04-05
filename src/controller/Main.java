@@ -8,6 +8,7 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
+import parco_mezzi.Autobus;
 import parco_mezzi.Mezzo;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
@@ -66,7 +67,15 @@ public class Main {
 		// BigliettoDAO.salvaBiglietto(b1);
 
 		// Imposto un periodo di servizio per un mezzo (formato: YYYY, M, D / inizio - fine)
-		Mezzo.getPeriodoServizio(LocalDate.of(2023, 4, 14), LocalDate.of(2023, 6, 4));
+		Autobus a1 = new Autobus();
+		// a1.setServizio(a1.getInServizio());
+		a1.setInizio_servizio(LocalDate.of(2023, 2, 14));
+		a1.setFine_servizio(LocalDate.of(2023, 6, 4)); // <-- mi aspetto 3 mesi e 21 giorni
+		a1.setInizio_manutenzione(LocalDate.of(2023, 2, 10)); 
+		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
+		
+		Mezzo.setPeriodoServizio(a1.getInizio_servizio(), a1.getFine_servizio());
+		Mezzo.setPeriodoManutenzione(a1.getInizio_manutenzione(), a1.getFine_manutenzione());
 
 	}
 
