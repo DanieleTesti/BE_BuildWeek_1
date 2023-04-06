@@ -16,7 +16,7 @@ import tessera.Tessera;
 
 @Entity
 @NamedQuery(name = "Abbonamento.findAll", query = "SELECT a FROM Abbonamento a")
-@NamedQuery(name = "Abbonamento.tesseraCheck", query = "select a from abbonamento a where a.data_fine_abbonamento > current_date")
+@NamedQuery(name = "Abbonamento.tesseraCheck", query = "SELECT a FROM Abbonamento a WHERE a.data_fine_abbonamento > current_date")
 public class Abbonamento {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)

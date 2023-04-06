@@ -1,5 +1,7 @@
 package parco_mezzi;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,10 +19,8 @@ public class Tratta {
 	private double mediaTempoPercorrenza;
 	private Integer nPercorrenzaTratta;
 	
-//    @ManyToMany(cascade = {
-//    CascadeType.ALL})
-//    private Mezzo mezzo;
-	
+    @ManyToMany (mappedBy = "tratte", cascade = {CascadeType.ALL})
+    private List<Mezzo> mezzi;
 	
 	//getters e setters
 	

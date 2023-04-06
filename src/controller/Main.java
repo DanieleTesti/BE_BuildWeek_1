@@ -71,7 +71,7 @@ public class Main {
 		Biglietto b3 = new Biglietto();
 		Biglietto b4 = new Biglietto();
 		Biglietto b5 = new Biglietto();
-////		
+
 //		BigliettoDAO.salvaBiglietto(b2);
 //		BigliettoDAO.salvaBiglietto(b3);
 //		BigliettoDAO.salvaBiglietto(b4);
@@ -98,7 +98,7 @@ public class Main {
 		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Mensile, AbbonamentoDAO.findTessera(2),
 				RivenditoreDAO.findRivenditore(1), LocalDate.of(2023, 4, 5));
 
-		AbbonamentoDAO.salvaAbbonamento(abb2);
+		//AbbonamentoDAO.salvaAbbonamento(abb2);
 
 		Tram tram1 = new Tram();
 		// MezzoDAO.salvaTram(tram1);
@@ -111,8 +111,8 @@ public class Main {
 //		 MezzoDAO.salvaAutobus(a1);
 //		 MezzoDAO.salvaTram(tram1);
 		
+		// ----> a1.addTratta(findTratta(t1)); <--- teorico da implementare
 		
-
 		Mezzo.setPeriodoServizio(a1.getInizio_servizio(), a1.getFine_servizio());
 		Mezzo.setPeriodoManutenzione(a1.getInizio_manutenzione(), a1.getFine_manutenzione());
 

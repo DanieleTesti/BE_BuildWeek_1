@@ -20,7 +20,7 @@ import biglietto.Biglietto;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@NamedQuery(name = "Mezzo.findAll", query = "SELECT a FROM Mezzo a")
+@NamedQuery(name = "Mezzi.findAll", query = "SELECT a FROM Mezzo a")
 @DiscriminatorColumn(name = "Mezzi")
 
 public abstract class Mezzo {
@@ -38,14 +38,20 @@ public abstract class Mezzo {
 	@ManyToOne
 	private Biglietto biglietto;
 	
-//	@ManyToMany(mappedBy = "mezzi")
-//    private List<Mezzo> tratte = new <ArrayList> ();
+	@ManyToMany
+    private List<Tratta> tratte;
 	
 
 	// costruttore vuoto
 	public Mezzo() {
 	}
-
+	
+	// metodi tratta/mezzo
+	
+	public void addTratta(Tratta t) {  // <--- non funzionante
+		tratte.add(t);
+    }
+	
 	// getters e setters
 
 	public Boolean getInServizio() {
