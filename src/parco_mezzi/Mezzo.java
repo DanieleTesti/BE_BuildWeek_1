@@ -10,18 +10,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQuery;
 
 import biglietto.Biglietto;
 
 @Entity
-@Inheritance( strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedQuery(name = "Mezzo.findAll", query = "SELECT a FROM Mezzo a")
 @DiscriminatorColumn(name = "Mezzi")
 
 public abstract class Mezzo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer capienza;
 	private Boolean inServizio = true;
 	private Period periodo_servizio;
 	private Period periodo_manutenzione;
@@ -30,16 +31,13 @@ public abstract class Mezzo {
 	private LocalDate inizio_servizio;
 	private LocalDate fine_servizio;
 	private int numeroBigliettiVidimati;
+	
 
 	// costruttore vuoto
 	public Mezzo() {
 	}
 
 	// getters e setters
-
-	public Integer getCapienza() {
-		return capienza;
-	}
 
 	public Boolean getInServizio() {
 		return inServizio;
@@ -93,20 +91,19 @@ public abstract class Mezzo {
 		return id;
 	}
 
-	public void setCapienza(Integer capienza) {
-		this.capienza = capienza;
-	}
-
 	public Boolean getServizio() {
 		return inServizio;
 	}
-	
+
 	public int getNumeroBigliettiVidimati() {
 		return numeroBigliettiVidimati;
 	}
 
-	
-	// cambio stato del servizio (in servizio - manutenzione)	
+	public void setNumeroBigliettiVidimati(int numB) {
+		this.numeroBigliettiVidimati = numB;
+	}
+
+	// cambio stato del servizio (in servizio - manutenzione)
 	public void setServizio(Boolean servizio) {
 		this.inServizio = servizio;
 		// registro il giorno in cui entra in manutenzione
@@ -126,20 +123,20 @@ public abstract class Mezzo {
 	public void registroDataManutenzione(Boolean statServ) {
 		LocalDate today;
 		// ritorna in servizio
-		if(statServ == false) {
+		if (statServ == false) {
 			this.inizio_manutenzione = today = LocalDate.now(); // <--- data attuale
-		// ritorna in manutenzione
+			// ritorna in manutenzione
 		} else if (statServ == true) {
 			this.fine_manutenzione = today = LocalDate.now(); // <--- data attuale
 		}
 	}
-	
+
 	public void registroDataServizio(Boolean statServ) {
 		LocalDate today;
 		// ritorna in servizio
-		if(statServ == true) {
+		if (statServ == true) {
 			this.inizio_servizio = today = LocalDate.now(); // <--- data attuale
-		// ritorna in manutenzione
+			// ritorna in manutenzione
 		} else if (statServ == false) {
 			this.fine_servizio = today = LocalDate.now(); // <--- data attuale
 		}
@@ -147,40 +144,34 @@ public abstract class Mezzo {
 
 	public static Period setPeriodoServizio(LocalDate inizio, LocalDate fine) {
 		Period p = Period.between(inizio, fine);
-		System.out.println("The Period between the start and end date of service is: " + p.getDays() + " days and " + p.getMonths()
-				+ " months.");
+		System.out.println("The Period between the start and end date of service is: " + p.getDays() + " days and "
+				+ p.getMonths() + " months.");
 		return p;
 	}
-	
+
 	public static Period setPeriodoManutenzione(LocalDate inizio, LocalDate fine) {
 		Period p = Period.between(inizio, fine);
-		System.out.println("The Period between the start and end date of maintainance is: " + p.getDays() + " days and " + p.getMonths()
-				+ " months.");
+		System.out.println("The Period between the start and end date of maintainance is: " + p.getDays() + " days and "
+				+ p.getMonths() + " months.");
 		return p;
 	}
-	
-	
-	 public void vidimaBiglietto (Biglietto b){
-		   b.setVidimato(!b.getVidimato()); 
-		   System.out.println(b);
-		   IncContatoreBiglietti(numeroBigliettiVidimati);
-		 }
-	 
-	 public int IncContatoreBiglietti(int numB){
-		    numB ++;
-		    return numB;
-		  }
-    
-	
-	
+
+	public void vidimaBiglietto(Biglietto b) {
+		b.setVidimato(!b.getVidimato());
+		System.out.println("Biglietto vidimato");
+		IncContatoreBiglietti(numeroBigliettiVidimati);
+	}
+
+	public int IncContatoreBiglietti(int numB) {
+		numB++;
+		return numB;
+	}
+
 	@Override
 	public String toString() {
-		return "Mezzo [id=" + id + ", capienza=" + capienza + ", inServizio=" + inServizio + ", periodo_servizio="
-				+ periodo_servizio + ", periodo_manutenzione=" + periodo_manutenzione + ", inizio_manutenzione="
-				+ inizio_manutenzione + ", fine_manutenzione=" + fine_manutenzione + ", inizio_servizio="
-				+ inizio_servizio + ", fine_servizio=" + fine_servizio + "]";
+		return "Mezzo [id=" + id + ", inServizio=" + inServizio + ", periodo_servizio=" + periodo_servizio
+				+ ", periodo_manutenzione=" + periodo_manutenzione + ", inizio_manutenzione=" + inizio_manutenzione
+				+ ", fine_manutenzione=" + fine_manutenzione + ", inizio_servizio=" + inizio_servizio
+				+ ", fine_servizio=" + fine_servizio + "]";
 	}
-	
-	
-
 }
