@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,8 @@ public abstract class Cards implements Serializable {
 	private Long id;
 	private LocalDate dataEmissione;
 	private LocalDate dataScadenza;
+	
+	private Period periodo;
 
 	public Cards(LocalDate dataEmissione, LocalDate dataScadenza) {
 		this.dataEmissione = dataEmissione;
@@ -50,9 +53,25 @@ public abstract class Cards implements Serializable {
 		this.dataScadenza = dataScadenza;
 	}
 
+	public Period getPeriodo() {
+		return periodo;
+	}
+
 	@Override
 	public String toString() {
 		return "Biglietti [id=" + id + ", dataEmissione=" + dataEmissione + ", dataScadenza=" + dataScadenza + "]";
 	}
 
+	//metodi custom
+	
+	//crea periodo in esame
+	public  Period setPeriodo(LocalDate inizio, LocalDate fine) {
+		this.periodo = Period.between(inizio, fine);
+		System.out.println("The Period between the start and end date of service is: " + periodo.getDays() + " days and "
+				+ periodo.getMonths() + " months.");
+		return this.periodo;
+	}
+	
+	//conto biglietti/abbonamenti nel periodo in esame
+	
 }
