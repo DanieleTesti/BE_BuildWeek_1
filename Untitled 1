@@ -58,6 +58,9 @@ counter ++
 
 // tratta
 ogni mezzo può essere assegnato ad una tratta
+
+
+
 ogni tratta ha una zona di partenza
 ogni tratta ha una zona capolinea
 ogni tratta ha una percorrenza media

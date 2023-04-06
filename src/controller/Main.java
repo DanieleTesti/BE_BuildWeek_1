@@ -9,10 +9,7 @@ import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
 import parco_mezzi.Autobus;
-<<<<<<< Updated upstream
-import parco_mezzi.Mezzo;
-=======
->>>>>>> Stashed changes
+import parco_mezzi.MezzoDAO;
 import parco_mezzi.Tram;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
@@ -24,11 +21,9 @@ import utente.UtenteDAO;
 import utils.JpaUtil;
 
 public class Main {
-<<<<<<< Updated upstream
 	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-=======
+
 	EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
->>>>>>> Stashed changes
 
 	public static void main(String[] args) {
 
@@ -62,29 +57,16 @@ public class Main {
 
 		// CREAZIONE NUOVI ABBONAMENTI
 		Abbonamento abb1 = new Abbonamento();
-<<<<<<< Updated upstream
-		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 3, 3));
-		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Settimanale);
-		abb1.setTessera(AbbonamentoDAO.findTessera(1));
-		abb1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-		//AbbonamentoDAO.salvaAbbonamento(abb1);
-=======
 		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 4, 1));
 		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Mensile);
 		abb1.setTessera(AbbonamentoDAO.findTessera(2));
 		abb1.setRivenditore(RivenditoreDAO.findRivenditore(2));
 		// AbbonamentoDAO.salvaAbbonamento(abb1);
->>>>>>> Stashed changes
-
 		// CREAZIONE NUOVI BIGLIETTI
 		Biglietto b1 = new Biglietto();
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-<<<<<<< Updated upstream
-		BigliettoDAO.salvaBiglietto(b1);
-=======
 //		BigliettoDAO.salvaBiglietto(b1);
->>>>>>> Stashed changes
 		
 
 		Biglietto b2 = new Biglietto();
@@ -95,7 +77,7 @@ public class Main {
 		Biglietto b4 = new Biglietto();
 		Biglietto b5 = new Biglietto();
 
-		// BigliettoDAO.salvaBiglietto(b2);
+		//BigliettoDAO.salvaBiglietto(b2);
 //		BigliettoDAO.salvaBiglietto(b3);
 //		BigliettoDAO.salvaBiglietto(b4);
 //		BigliettoDAO.salvaBiglietto(b5);
@@ -111,11 +93,6 @@ public class Main {
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
 		
 		//MezzoDAO.salvaAutobus(a1);
-<<<<<<< Updated upstream
-		a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
-		//System.out.println(b1.getVidimato());
-//		a1.vidimaBiglietto(b2);
-=======
 		// a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
 		// Mezzo a = MezzoDAO.findMezzo(4);
 		// System.out.println(a.toString());
@@ -125,10 +102,13 @@ public class Main {
 		// METODO PER VIDIMARE I BIGLIETTI DEFINITIVO
 		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(5));
 
->>>>>>> Stashed changes
-//		a1.vidimaBiglietto(b3);
-//		a1.vidimaBiglietto(b4);
-//		a1.vidimaBiglietto(b5);
+
+		Mezzo a = MezzoDAO.findMezzo(2);
+		System.out.println(a.toString());
+		
+		a1.vidimaBiglietto(BigliettoDAO.findBiglietto(1)); // <-- ci vidima il biglietto
+		//System.out.println(b1.getVidimato());
+		a1.vidimaBiglietto(BigliettoDAO.findBiglietto(2));
 		
 		// test abbonamento valido
 		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Mensile, AbbonamentoDAO.findTessera(2),
