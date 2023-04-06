@@ -16,6 +16,7 @@ public class BigliettoDAO {
 			em.getTransaction().commit();
 			System.out.println("Biglietto Salvato");
 		} catch (Exception e) {
+			System.out.println("errore Biglietto");
 			System.out.println(e);
 			em.getTransaction().rollback();
 		} 

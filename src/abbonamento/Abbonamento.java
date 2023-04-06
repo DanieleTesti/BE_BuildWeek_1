@@ -16,6 +16,7 @@ import tessera.Tessera;
 
 @Entity
 @NamedQuery(name = "Abbonamento.findAll", query = "SELECT a FROM Abbonamento a")
+@NamedQuery(name = "Abbonamento.tesseraCheck", query = "SELECT a FROM Abbonamento a WHERE a.data_fine_abbonamento < current_date")
 public class Abbonamento {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,21 +50,22 @@ public class Abbonamento {
 		public Abbonamento() {
 			super();
 		}
+		
+		// implementazione abbonamento mensile o settimanale
+		public Abbonamento(Tipologia_abbonamento tipologia_abbonamento, Tessera tessera,
+				Rivenditore_autorizzato rivenditore, LocalDate data_inizio_abbonamento) {
+			super();
+			this.tipologia_abbonamento = tipologia_abbonamento;
+			this.tessera = tessera;
+			this.rivenditore = rivenditore;
+			this.data_inizio_abbonamento = data_inizio_abbonamento;
 
-//		public Abbonamento(Tipologia_abbonamento tipologia_abbonamento, Tessera tessera,
-//				Rivenditore_autorizzato rivenditore, LocalDate data_inizio_abbonamento) {
-//			super();
-//			this.tipologia_abbonamento = tipologia_abbonamento;
-//			this.tessera = tessera;
-//			this.rivenditore = rivenditore;
-//			this.data_inizio_abbonamento = data_inizio_abbonamento;
-//
-//			if (tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
-//				data_fine_abbonamento = data_inizio_abbonamento.plusDays(7);
-//			} else if (tipologia_abbonamento == Tipologia_abbonamento.Mensile) {
-//				data_fine_abbonamento = data_inizio_abbonamento.plusMonths(1);
-//			}
-//		}
+			if (tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
+				data_fine_abbonamento = data_inizio_abbonamento.plusDays(7);
+			} else if (tipologia_abbonamento == Tipologia_abbonamento.Mensile) {
+				data_fine_abbonamento = data_inizio_abbonamento.plusMonths(1);
+			}
+		}
 
 		public Integer getId() {
 			return id;

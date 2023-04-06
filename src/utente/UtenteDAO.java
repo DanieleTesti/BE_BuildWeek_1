@@ -18,9 +18,7 @@ public class UtenteDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			em.getTransaction().rollback();
-		} finally {
-//			em.close();
-		}
+		} 
 		return u;
 	}
 

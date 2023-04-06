@@ -17,10 +17,9 @@ public class AbbonamentoDAO {
 			System.out.println("Abbonamneto Salvato");
 		} catch (Exception e) {
 			System.out.println(e);
-			em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
+			System.out.println("errore Abbonamento");
+			// em.getTransaction().rollback();
+		} 
 	}
 
 	public static Tessera findTessera(Integer id) {

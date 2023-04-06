@@ -89,14 +89,16 @@ public class Main {
 		a1.setInizio_manutenzione(LocalDate.of(2023, 2, 10));
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
 		
-		MezzoDAO.salvaAutobus(a1);
+		//MezzoDAO.salvaAutobus(a1);
 		a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
 		a1.vidimaBiglietto(b2);
 		a1.vidimaBiglietto(b3);
 		a1.vidimaBiglietto(b4);
 		a1.vidimaBiglietto(b5);
 		
-		
+		// test abbonamento valido
+		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Settimanale, t1, r1, LocalDate.of(2023, 3, 5));
+		AbbonamentoDAO.salvaAbbonamento(abb2);
 
 		Tram tram1 = new Tram();
 
