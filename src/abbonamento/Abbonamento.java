@@ -69,9 +69,6 @@ public class Abbonamento {
 			return id;
 		}
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
 
 		public Tipologia_abbonamento getTipologia_abbonamento() {
 			return tipologia_abbonamento;
@@ -104,5 +101,7 @@ public class Abbonamento {
 					+ ", data_fine_abbonamento=" + data_fine_abbonamento + "]";
 		}
 
+		//metodi custom
+		
 
 }

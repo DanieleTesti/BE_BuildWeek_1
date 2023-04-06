@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import parco_mezzi.Mezzo;
 import rivenditore.Rivenditore_autorizzato;
 import utente.Utente;
 
@@ -26,15 +27,6 @@ public class Biglietto {
 	private LocalDate data_emissione;
 	private boolean bigliettoVidimato = false;
 	
-
-	public Biglietto(boolean scaduto, Utente utente, Rivenditore_autorizzato rivenditore, LocalDate data_emissione) {
-		super();
-		this.scaduto = scaduto;
-		this.utente = utente;
-		this.rivenditore = rivenditore;
-		this.data_emissione = data_emissione;
-	}
-
 	public Biglietto() {
 
 	}
