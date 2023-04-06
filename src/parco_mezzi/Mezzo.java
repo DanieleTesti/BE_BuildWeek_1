@@ -39,7 +39,7 @@ public abstract class Mezzo {
 	private Biglietto biglietto;
 	
 	@ManyToMany
-    private List<Tratta> tratte;
+    private List<Tratta> tratte; // = new ArrayList<>();
 	
 
 	// costruttore vuoto
@@ -50,9 +50,30 @@ public abstract class Mezzo {
 	
 	public void addTratta(Tratta t) {  // <--- non funzionante
 		tratte.add(t);
+		//t.getMezzi().add(this);
     }
 	
 	// getters e setters
+
+	public Biglietto getBiglietto() {
+		return biglietto;
+	}
+
+	public void setBiglietto(Biglietto biglietto) {
+		this.biglietto = biglietto;
+	}
+
+	public List<Tratta> getTratte() {
+		return tratte;
+	}
+
+	public void setTratte(List<Tratta> tratte) {
+		this.tratte = tratte;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Boolean getInServizio() {
 		return inServizio;

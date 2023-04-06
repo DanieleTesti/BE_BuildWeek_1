@@ -27,6 +27,12 @@ public class Tratta {
 	public String getZonaPartenza() {
 		return zonaPartenza;
 	}
+	public List<Mezzo> getMezzi() {
+		return mezzi;
+	}
+	public void setMezzi(List<Mezzo> mezzi) {
+		this.mezzi = mezzi;
+	}
 	public void setZonaPartenza(String zonaPartenza) {
 		this.zonaPartenza = zonaPartenza;
 	}

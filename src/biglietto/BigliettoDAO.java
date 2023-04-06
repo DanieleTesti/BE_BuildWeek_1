@@ -29,6 +29,13 @@ public class BigliettoDAO {
 		System.out.println("Biglietto eliminato!");
 	};
 	
+	public static Biglietto findBiglietto(Biglietto m) {
+        em.getTransaction().begin();
+        Biglietto e = em.find(Biglietto.class, m);
+        em.getTransaction().commit();
+        return e;
+    }
+	
 	/*public static int findBigliettiVidimati() {
 		   	
 	    Query q = em.createQuery("SELECT COUNT b FROM Biglietto b WHERE b.bigliettoVidimato = :t ");

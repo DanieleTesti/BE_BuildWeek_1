@@ -8,6 +8,7 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
+import biglietto.BigliettoDAO;
 import parco_mezzi.Autobus;
 import parco_mezzi.Mezzo;
 import parco_mezzi.Tram;
@@ -65,14 +66,15 @@ public class Main {
 		Biglietto b1 = new Biglietto();
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-	   // BigliettoDAO.salvaBiglietto(b1);
+		//BigliettoDAO.salvaBiglietto(b1);
+		
 
 		Biglietto b2 = new Biglietto();
 		Biglietto b3 = new Biglietto();
 		Biglietto b4 = new Biglietto();
 		Biglietto b5 = new Biglietto();
 
-//		BigliettoDAO.salvaBiglietto(b2);
+		// BigliettoDAO.salvaBiglietto(b2);
 //		BigliettoDAO.salvaBiglietto(b3);
 //		BigliettoDAO.salvaBiglietto(b4);
 //		BigliettoDAO.salvaBiglietto(b5);
@@ -88,11 +90,11 @@ public class Main {
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
 		
 		//MezzoDAO.salvaAutobus(a1);
-		a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
-		a1.vidimaBiglietto(b2);
-		a1.vidimaBiglietto(b3);
-		a1.vidimaBiglietto(b4);
-		a1.vidimaBiglietto(b5);
+		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(b1)); // <-- ci vidima il biglietto
+//		a1.vidimaBiglietto(b2);
+//		a1.vidimaBiglietto(b3);
+//		a1.vidimaBiglietto(b4);
+//		a1.vidimaBiglietto(b5);
 		
 		// test abbonamento valido
 		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Mensile, AbbonamentoDAO.findTessera(2),
