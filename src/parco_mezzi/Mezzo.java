@@ -2,7 +2,10 @@ package parco_mezzi;
 
 import java.time.LocalDate;
 import java.time.Period;
+<<<<<<< Updated upstream
 import java.util.List;
+=======
+>>>>>>> Stashed changes
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -12,12 +15,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 import biglietto.Biglietto;
+import tratta.Tratta;
 import utils.JpaUtil;
 
 @Entity
@@ -39,10 +41,17 @@ public abstract class Mezzo {
 	private int numeroBigliettiVidimati = 0;
 	@ManyToOne
 	private Biglietto biglietto;
+<<<<<<< Updated upstream
 	
 	@ManyToMany
     private List<Tratta> tratte; // = new ArrayList<>();
 	
+=======
+	
+	@ManyToOne
+	private Tratta tratta;
+	
+>>>>>>> Stashed changes
 
 	// costruttore vuoto
 	public Mezzo() {
@@ -50,10 +59,20 @@ public abstract class Mezzo {
 	
 	// metodi tratta/mezzo
 	
+<<<<<<< Updated upstream
 	public void addTratta(Tratta t) {  // <--- non funzionante
 		tratte.add(t);
 		//t.getMezzi().add(this);
     }
+=======
+	public void setTratta(Tratta tra) {
+		this.tratta = tra;
+	}
+
+	public Tratta getTratta() {
+		return tratta;
+	}
+>>>>>>> Stashed changes
 	
 	// getters e setters
 
@@ -65,6 +84,7 @@ public abstract class Mezzo {
 		this.biglietto = biglietto;
 	}
 
+<<<<<<< Updated upstream
 	public List<Tratta> getTratte() {
 		return tratte;
 	}
@@ -72,6 +92,8 @@ public abstract class Mezzo {
 	public void setTratte(List<Tratta> tratte) {
 		this.tratte = tratte;
 	}
+=======
+>>>>>>> Stashed changes
 
 	public void setId(Long id) {
 		this.id = id;

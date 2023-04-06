@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
-import parco_mezzi.Mezzo;
 import rivenditore.Rivenditore_autorizzato;
 import utente.Utente;
 
@@ -19,14 +18,14 @@ public class Biglietto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private boolean scaduto;
+	// private boolean scaduto;
 	@ManyToOne
 	private Utente utente;
 	@ManyToOne
 	private Rivenditore_autorizzato rivenditore;
 	private LocalDate data_emissione;
 	private boolean bigliettoVidimato = false;
-	
+
 	public Biglietto() {
 
 	}
@@ -35,13 +34,13 @@ public class Biglietto {
 		return id;
 	}
 
-	public boolean isScaduto() {
-		return scaduto;
-	}
-
-	public void setScaduto(boolean scaduto) {
-		this.scaduto = scaduto;
-	}
+//	public boolean isScaduto() {
+//		return scaduto;
+//	}
+//
+//	public void setScaduto(boolean scaduto) {
+//		this.scaduto = scaduto;
+//	}
 
 	public Utente getUtente() {
 		return utente;
@@ -66,21 +65,19 @@ public class Biglietto {
 	public void setData_emissione(LocalDate data_emissione) {
 		this.data_emissione = data_emissione;
 	}
-	
+
 	public void setVidimato(boolean vidimato) {
 		this.bigliettoVidimato = vidimato;
 	}
-	
+
 	public Boolean getVidimato() {
 		return bigliettoVidimato;
 	}
-	
-	
 
 	@Override
 	public String toString() {
-		return "Biglietto [id=" + id + ", scaduto=" + scaduto + ", utente=" + utente + ", rivenditore=" + rivenditore
+		return "Biglietto [id=" + id + ", utente=" + utente + ", rivenditore=" + rivenditore
 				+ ", data_emissione=" + data_emissione + ", bigliettoVidimato=" + bigliettoVidimato + "]";
 	}
-	
+
 }
