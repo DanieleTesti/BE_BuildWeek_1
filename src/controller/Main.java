@@ -8,7 +8,9 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
+import biglietto.BigliettoDAO;
 import parco_mezzi.Autobus;
+import parco_mezzi.Mezzo;
 import parco_mezzi.MezzoDAO;
 import parco_mezzi.Tram;
 import rivenditore.Distributore_Automatico;
@@ -21,8 +23,6 @@ import utente.UtenteDAO;
 import utils.JpaUtil;
 
 public class Main {
-	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-
 	EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 	public static void main(String[] args) {
