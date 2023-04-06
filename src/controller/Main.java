@@ -66,7 +66,7 @@ public class Main {
 		Biglietto b1 = new Biglietto();
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-		//BigliettoDAO.salvaBiglietto(b1);
+		BigliettoDAO.salvaBiglietto(b1);
 		
 
 		Biglietto b2 = new Biglietto();
@@ -90,7 +90,8 @@ public class Main {
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
 		
 		//MezzoDAO.salvaAutobus(a1);
-		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(b1)); // <-- ci vidima il biglietto
+		a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
+		//System.out.println(b1.getVidimato());
 //		a1.vidimaBiglietto(b2);
 //		a1.vidimaBiglietto(b3);
 //		a1.vidimaBiglietto(b4);
