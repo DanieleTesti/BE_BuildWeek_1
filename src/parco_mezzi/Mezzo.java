@@ -2,7 +2,6 @@ package parco_mezzi;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,17 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 import biglietto.Biglietto;
+import tratta.Tratta;
 import utils.JpaUtil;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NamedQuery(name = "Mezzi.findAll", query = "SELECT a FROM Mezzo a")
@@ -44,10 +38,14 @@ public abstract class Mezzo {
 	private LocalDate fine_servizio;
 	private int numeroBigliettiVidimati = 0;
 	@ManyToOne
+	private Tratta tratta;
+	
+
+
 	private Biglietto biglietto;	
 	@ManyToOne 
 	private Tratta tratta;
-	
+
 	// costruttore vuoto
 	public Mezzo() {
 	}
@@ -57,7 +55,7 @@ public abstract class Mezzo {
 	public void setTratta(Tratta tra) {
 		this.tratta = tra;
 	}
-	
+
 	public Tratta getTratta() {
 		return tratta;
 	}
@@ -195,24 +193,6 @@ public abstract class Mezzo {
 
 	public void vidimaBiglietto(Biglietto b) {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-<<<<<<< Updated upstream
-
-        b.setVidimato(!b.getVidimato());
-        System.out.println("Biglietto vidimato");
-        em.getTransaction().begin();
-        em.merge(b);
-        em.getTransaction().commit();
-        IncContatoreBiglietti();
-    }
-    public void IncContatoreBiglietti() {
-    	EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-
-        this.numeroBigliettiVidimati++;
-        em.getTransaction().begin();
-        em.merge(this);
-        em.getTransaction().commit();
-    }
-=======
 		b.setVidimato(!b.getVidimato());
 		System.out.println("Biglietto vidimato");
 		em.getTransaction().begin();
@@ -228,7 +208,6 @@ public abstract class Mezzo {
 		em.merge(this);
 		em.getTransaction().commit();
 	}
->>>>>>> Stashed changes
 
 	@Override
 	public String toString() {

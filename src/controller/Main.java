@@ -8,21 +8,22 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
-import biglietto.BigliettoDAO;
 import parco_mezzi.Autobus;
-import parco_mezzi.Mezzo;
 import parco_mezzi.MezzoDAO;
 import parco_mezzi.Tram;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
 import rivenditore.Rivenditore_autorizzato;
 import tessera.Tessera;
+import tratta.Tratta;
 import utente.Utente;
 import utente.UtenteDAO;
 import utils.JpaUtil;
 
 public class Main {
-//	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+
+	EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 	public static void main(String[] args) {
 
@@ -31,19 +32,18 @@ public class Main {
 		u1.setCognome("Rossi");
 		u1.setNome("Mario");
 //		System.out.println(u1.toString());
-//		UtenteDAO.salvaUtente(u1);
+		// UtenteDAO.salvaUtente(u1);
 
 		Utente u2 = new Utente();
 		u2.setCognome("Flavio");
 		u2.setNome("Verdi");
-//		UtenteDAO.salvaUtente(u2);
+		// UtenteDAO.salvaUtente(u2);
+
 		Tessera t1 = new Tessera();
 
-		// System.out.println(UtenteDAO.findUtente(1));
-
-		t1.setUtente(UtenteDAO.findUtente(1));
-		t1.setData_inizio_abbonamento(LocalDate.of(2022, 5, 3));
-		t1.setData_fine_abbonamento(LocalDate.of(2023, 5, 3));
+		t1.setUtente(UtenteDAO.findUtente(2));
+		t1.setData_inizio_abbonamento(LocalDate.of(2022, 8, 3));
+		t1.setData_fine_abbonamento(LocalDate.of(2023, 8, 3));
 		// TesseraDAO.salvaTessera(t1);
 
 		// CREAZIONE NUOVI RIVENDITORI
@@ -57,21 +57,22 @@ public class Main {
 
 		// CREAZIONE NUOVI ABBONAMENTI
 		Abbonamento abb1 = new Abbonamento();
-		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 3, 3));
-		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Settimanale);
-		abb1.setTessera(AbbonamentoDAO.findTessera(1));
-		abb1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-		//AbbonamentoDAO.salvaAbbonamento(abb1);
-		System.out.println("tentativo1 a1");
-
+		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 4, 1));
+		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Mensile);
+		abb1.setTessera(AbbonamentoDAO.findTessera(2));
+		abb1.setRivenditore(RivenditoreDAO.findRivenditore(2));
+		// AbbonamentoDAO.salvaAbbonamento(abb1);
 		// CREAZIONE NUOVI BIGLIETTI
 		Biglietto b1 = new Biglietto();
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-		//BigliettoDAO.salvaBiglietto(b1);
+//		BigliettoDAO.salvaBiglietto(b1);
 		
 
 		Biglietto b2 = new Biglietto();
+		b2.setRivenditore(RivenditoreDAO.findRivenditore(2));
+		b2.setData_emissione(LocalDate.of(2023, 3, 20));
+		// BigliettoDAO.salvaBiglietto(b2);
 		Biglietto b3 = new Biglietto();
 		Biglietto b4 = new Biglietto();
 		Biglietto b5 = new Biglietto();
@@ -92,6 +93,16 @@ public class Main {
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
 		
 		//MezzoDAO.salvaAutobus(a1);
+		// a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
+		// Mezzo a = MezzoDAO.findMezzo(4);
+		// System.out.println(a.toString());
+		//System.out.println(b1.getVidimato());
+		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(7));
+
+		// METODO PER VIDIMARE I BIGLIETTI DEFINITIVO
+		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(5));
+
+
 		Mezzo a = MezzoDAO.findMezzo(2);
 		System.out.println(a.toString());
 		
@@ -108,18 +119,31 @@ public class Main {
 		Tram tram1 = new Tram();
 		// MezzoDAO.salvaTram(tram1);
 
+		// DOBBIAMO PRENDERE L'ID DEL TRAM/AUTOBUS E METTERLO PER SALVARE I BIGLIETTI
+
+		// tram1.vidimaBiglietto(BigliettoDAO.findBiglietto(5));
+
 		Autobus autobus1 = new Autobus();
 		// MezzoDAO.salvaAutobus(autobus1);
 		// System.out.println(MezzoDAO.findMezzo(tram1));
 
+		// ***//NON FUNZIONA E DA FAR VEDERE A EMANUELE
+		// RivenditoreDAO.conta(2);
 
 //		 MezzoDAO.salvaAutobus(a1);
 //		 MezzoDAO.salvaTram(tram1);
 		
+		Tratta tratta1 = new Tratta("Termini", "Fiumicino", 120);
+//		tratta1.setZonaPartenza("Termini");
+//		tratta1.setCapolinea("Fiumicino");
+//		tratta1.setnPercorrenzaTratta(120);
+		// TrattaDAO.saveTratta(tratta1);
+		
 		// ----> a1.addTratta(findTratta(t1)); <--- teorico da implementare
 		
-		Mezzo.setPeriodoServizio(a1.getInizio_servizio(), a1.getFine_servizio());
-		Mezzo.setPeriodoManutenzione(a1.getInizio_manutenzione(), a1.getFine_manutenzione());
+		// Mezzo.setPeriodoServizio(a1.getInizio_servizio(), a1.getFine_servizio());
+		// Mezzo.setPeriodoManutenzione(a1.getInizio_manutenzione(),
+		// a1.getFine_manutenzione());
 
 		
 	}

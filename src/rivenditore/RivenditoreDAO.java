@@ -1,6 +1,7 @@
 package rivenditore;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import utils.JpaUtil;
 
@@ -56,6 +57,12 @@ public class RivenditoreDAO {
 		Rivenditore_autorizzato e = em.find(Rivenditore_autorizzato.class, id);
 		em.getTransaction().commit();
 		return e;
+	}
+
+	public static void conta(int id) {
+		Query q = em.createQuery("SELECT COUNT(*) FROM Biglietto b WHERE b.rivenditore_id = :id");
+		q.setParameter("id", id);
+		System.out.println("Biglietti e abbonamenti emessi " + q);
 	}
 
 }

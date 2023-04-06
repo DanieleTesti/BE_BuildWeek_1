@@ -56,4 +56,11 @@ public class MezzoDAO {
 		em.getTransaction().commit();
 		return e;
 	}
+
+	public static Mezzo findMezzo(Integer id) {
+		em.getTransaction().begin();
+		Mezzo e = em.find(Mezzo.class, id);
+		em.getTransaction().commit();
+		return e;
+	}
 }
