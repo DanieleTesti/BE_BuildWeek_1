@@ -32,7 +32,7 @@ public abstract class Mezzo {
 	private LocalDate fine_manutenzione;
 	private LocalDate inizio_servizio;
 	private LocalDate fine_servizio;
-	private int numeroBigliettiVidimati;
+	private int numeroBigliettiVidimati = 0;
 	@ManyToOne
 	private Biglietto biglietto;
 	
@@ -103,8 +103,8 @@ public abstract class Mezzo {
 		return numeroBigliettiVidimati;
 	}
 
-	public void setNumeroBigliettiVidimati(int numB) {
-		this.numeroBigliettiVidimati = numB;
+	public void setNumeroBigliettiVidimati() {
+		this.numeroBigliettiVidimati = numeroBigliettiVidimati;
 	}
 
 	// cambio stato del servizio (in servizio - manutenzione)
@@ -163,12 +163,11 @@ public abstract class Mezzo {
 	public void vidimaBiglietto(Biglietto b) {
 		b.setVidimato(!b.getVidimato());
 		System.out.println("Biglietto vidimato");
-		IncContatoreBiglietti(numeroBigliettiVidimati);
+		IncContatoreBiglietti();
 	}
 
-	public int IncContatoreBiglietti(int numB) {
-		numB++;
-		return numB;
+	public void IncContatoreBiglietti() {
+		this.numeroBigliettiVidimati++;
 	}
 
 	@Override

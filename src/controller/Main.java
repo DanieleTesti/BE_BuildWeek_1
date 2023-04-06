@@ -61,40 +61,42 @@ public class Main {
 		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Settimanale);
 		abb1.setTessera(AbbonamentoDAO.findTessera(1));
 		abb1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-		AbbonamentoDAO.salvaAbbonamento(abb1);
+		//AbbonamentoDAO.salvaAbbonamento(abb1);
 
 		// CREAZIONE NUOVI BIGLIETTI
 		Biglietto b1 = new Biglietto();
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-	    BigliettoDAO.salvaBiglietto(b1);
+	   // BigliettoDAO.salvaBiglietto(b1);
 
 		Biglietto b2 = new Biglietto();
 		Biglietto b3 = new Biglietto();
 		Biglietto b4 = new Biglietto();
 		Biglietto b5 = new Biglietto();
 ////		
-		BigliettoDAO.salvaBiglietto(b2);
-		BigliettoDAO.salvaBiglietto(b3);
-		BigliettoDAO.salvaBiglietto(b4);
-		BigliettoDAO.salvaBiglietto(b5);
+//		BigliettoDAO.salvaBiglietto(b2);
+//		BigliettoDAO.salvaBiglietto(b3);
+//		BigliettoDAO.salvaBiglietto(b4);
+//		BigliettoDAO.salvaBiglietto(b5);
 //		
 
 		// Imposto un periodo di servizio per un mezzo (formato: YYYY, M, D / inizio -
 		// fine)
 		Autobus a1 = new Autobus();
-		// a1.setServizio(a1.getInServizio());
+		a1.setServizio(a1.getInServizio());
 		a1.setInizio_servizio(LocalDate.of(2023, 2, 14));
 		a1.setFine_servizio(LocalDate.of(2023, 6, 4)); // <-- mi aspetto 3 mesi e 21 giorni
 		a1.setInizio_manutenzione(LocalDate.of(2023, 2, 10));
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
-
+		
+		MezzoDAO.salvaAutobus(a1);
 		a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
 		a1.vidimaBiglietto(b2);
 		a1.vidimaBiglietto(b3);
 		a1.vidimaBiglietto(b4);
 		a1.vidimaBiglietto(b5);
-		 a1.setNumeroBigliettiVidimati(56);
+		
+		
 
 		Tram tram1 = new Tram();
 
@@ -103,13 +105,15 @@ public class Main {
 		// System.out.println(MezzoDAO.findMezzo(tram1));
 
 
-		 MezzoDAO.salvaAutobus(a1);
-		 MezzoDAO.salvaTram(tram1);
-		 tram1.vidimaBiglietto(b5);
+//		 MezzoDAO.salvaAutobus(a1);
+//		 MezzoDAO.salvaTram(tram1);
+		
+		
 
 		Mezzo.setPeriodoServizio(a1.getInizio_servizio(), a1.getFine_servizio());
 		Mezzo.setPeriodoManutenzione(a1.getInizio_manutenzione(), a1.getFine_manutenzione());
 
+		
 	}
 
 }
