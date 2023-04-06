@@ -2,6 +2,7 @@ package parco_mezzi;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -36,8 +37,9 @@ public abstract class Mezzo {
 	private int numeroBigliettiVidimati = 0;
 	@ManyToOne
 	private Biglietto biglietto;
-//	@ManyToMany
-//	private Tratta tratta;
+	
+//	@ManyToMany(mappedBy = "mezzi")
+//    private List<Mezzo> tratte = new <ArrayList> ();
 	
 
 	// costruttore vuoto
@@ -106,7 +108,7 @@ public abstract class Mezzo {
 		return numeroBigliettiVidimati;
 	}
 
-	public void setNumeroBigliettiVidimati() {
+	public void setNumeroBigliettiVidimati(int numeroBigliettiVidimati) {
 		this.numeroBigliettiVidimati = numeroBigliettiVidimati;
 	}
 

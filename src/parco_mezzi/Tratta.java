@@ -1,5 +1,6 @@
 package parco_mezzi;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +17,9 @@ public class Tratta {
 	private double mediaTempoPercorrenza;
 	private Integer nPercorrenzaTratta;
 	
-//	@ManyToMany
-//	private Mezzo mezzo;
+//    @ManyToMany(cascade = {
+//    CascadeType.ALL})
+//    private Mezzo mezzo;
 	
 	
 	//getters e setters
@@ -49,9 +51,13 @@ public class Tratta {
 	
 // metodi custom
 	
+	//calcolo tempo di percorrenza di una tratta
+	
 	// calcolo tempo medio di percorrenza
 	
+	//numero di volte mezzo percorre una tratta
 	
+	//
 	
 
 
