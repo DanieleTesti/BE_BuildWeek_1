@@ -19,7 +19,7 @@ public class AbbonamentoDAO {
 			System.out.println(e);
 			System.out.println("errore Abbonamento");
 			// em.getTransaction().rollback();
-		} 
+		}
 	}
 
 	public static Tessera findTessera(Integer id) {

@@ -8,10 +8,8 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
-import biglietto.BigliettoDAO;
 import parco_mezzi.Autobus;
 import parco_mezzi.Mezzo;
-import parco_mezzi.MezzoDAO;
 import parco_mezzi.Tram;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
@@ -97,13 +95,16 @@ public class Main {
 		a1.vidimaBiglietto(b5);
 		
 		// test abbonamento valido
-		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Settimanale, t1, r1, LocalDate.of(2023, 3, 5));
+		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Mensile, AbbonamentoDAO.findTessera(2),
+				RivenditoreDAO.findRivenditore(1), LocalDate.of(2023, 4, 5));
+
 		AbbonamentoDAO.salvaAbbonamento(abb2);
 
 		Tram tram1 = new Tram();
+		// MezzoDAO.salvaTram(tram1);
 
 		Autobus autobus1 = new Autobus();
-
+		// MezzoDAO.salvaAutobus(autobus1);
 		// System.out.println(MezzoDAO.findMezzo(tram1));
 
 
