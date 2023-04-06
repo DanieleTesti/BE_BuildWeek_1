@@ -11,6 +11,7 @@ import biglietto.Biglietto;
 import biglietto.BigliettoDAO;
 import parco_mezzi.Autobus;
 import parco_mezzi.Mezzo;
+import parco_mezzi.MezzoDAO;
 import parco_mezzi.Tram;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
@@ -21,7 +22,7 @@ import utente.UtenteDAO;
 import utils.JpaUtil;
 
 public class Main {
-	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+//	static EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 	public static void main(String[] args) {
 
@@ -61,12 +62,13 @@ public class Main {
 		abb1.setTessera(AbbonamentoDAO.findTessera(1));
 		abb1.setRivenditore(RivenditoreDAO.findRivenditore(1));
 		//AbbonamentoDAO.salvaAbbonamento(abb1);
+		System.out.println("tentativo1 a1");
 
 		// CREAZIONE NUOVI BIGLIETTI
 		Biglietto b1 = new Biglietto();
 		b1.setData_emissione(LocalDate.of(2023, 4, 4));
 		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-		BigliettoDAO.salvaBiglietto(b1);
+		//BigliettoDAO.salvaBiglietto(b1);
 		
 
 		Biglietto b2 = new Biglietto();
@@ -74,7 +76,7 @@ public class Main {
 		Biglietto b4 = new Biglietto();
 		Biglietto b5 = new Biglietto();
 
-		// BigliettoDAO.salvaBiglietto(b2);
+		//BigliettoDAO.salvaBiglietto(b2);
 //		BigliettoDAO.salvaBiglietto(b3);
 //		BigliettoDAO.salvaBiglietto(b4);
 //		BigliettoDAO.salvaBiglietto(b5);
@@ -90,12 +92,12 @@ public class Main {
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
 		
 		//MezzoDAO.salvaAutobus(a1);
-		a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
+		Mezzo a = MezzoDAO.findMezzo(2);
+		System.out.println(a.toString());
+		
+		a1.vidimaBiglietto(BigliettoDAO.findBiglietto(1)); // <-- ci vidima il biglietto
 		//System.out.println(b1.getVidimato());
-//		a1.vidimaBiglietto(b2);
-//		a1.vidimaBiglietto(b3);
-//		a1.vidimaBiglietto(b4);
-//		a1.vidimaBiglietto(b5);
+		a1.vidimaBiglietto(BigliettoDAO.findBiglietto(2));
 		
 		// test abbonamento valido
 		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Mensile, AbbonamentoDAO.findTessera(2),

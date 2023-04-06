@@ -1,5 +1,6 @@
 package parco_mezzi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Tratta {
@@ -19,19 +21,10 @@ public class Tratta {
 	private double mediaTempoPercorrenza;
 	private Integer nPercorrenzaTratta;
 	
-    @ManyToMany (mappedBy = "tratte", cascade = {CascadeType.ALL})
-    private List<Mezzo> mezzi;
-	
 	//getters e setters
 	
 	public String getZonaPartenza() {
 		return zonaPartenza;
-	}
-	public List<Mezzo> getMezzi() {
-		return mezzi;
-	}
-	public void setMezzi(List<Mezzo> mezzi) {
-		this.mezzi = mezzi;
 	}
 	public void setZonaPartenza(String zonaPartenza) {
 		this.zonaPartenza = zonaPartenza;

@@ -2,8 +2,10 @@ package parco_mezzi;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -19,13 +21,17 @@ import javax.persistence.OneToMany;
 
 import biglietto.Biglietto;
 import utils.JpaUtil;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NamedQuery(name = "Mezzi.findAll", query = "SELECT a FROM Mezzo a")
 @DiscriminatorColumn(name = "Mezzi")
 
 public abstract class Mezzo {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -38,22 +44,23 @@ public abstract class Mezzo {
 	private LocalDate fine_servizio;
 	private int numeroBigliettiVidimati = 0;
 	@ManyToOne
-	private Biglietto biglietto;
+	private Biglietto biglietto;	
+	@ManyToOne 
+	private Tratta tratta;
 	
-	@ManyToMany
-    private List<Tratta> tratte; // = new ArrayList<>();
-	
-
 	// costruttore vuoto
 	public Mezzo() {
 	}
 	
 	// metodi tratta/mezzo
 	
-	public void addTratta(Tratta t) {  // <--- non funzionante
-		tratte.add(t);
-		//t.getMezzi().add(this);
-    }
+	public void setTratta(Tratta tra) {
+		this.tratta = tra;
+	}
+	
+	public Tratta getTratta() {
+		return tratta;
+	}
 	
 	// getters e setters
 
@@ -63,14 +70,6 @@ public abstract class Mezzo {
 
 	public void setBiglietto(Biglietto biglietto) {
 		this.biglietto = biglietto;
-	}
-
-	public List<Tratta> getTratte() {
-		return tratte;
-	}
-
-	public void setTratte(List<Tratta> tratte) {
-		this.tratte = tratte;
 	}
 
 	public void setId(Long id) {
@@ -196,6 +195,7 @@ public abstract class Mezzo {
 
 	public void vidimaBiglietto(Biglietto b) {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+<<<<<<< Updated upstream
 
         b.setVidimato(!b.getVidimato());
         System.out.println("Biglietto vidimato");
@@ -212,6 +212,23 @@ public abstract class Mezzo {
         em.merge(this);
         em.getTransaction().commit();
     }
+=======
+		b.setVidimato(!b.getVidimato());
+		System.out.println("Biglietto vidimato");
+		em.getTransaction().begin();
+		em.merge(b);
+		em.getTransaction().commit();
+		IncContatoreBiglietti();
+	}
+
+	public void IncContatoreBiglietti() {
+		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		this.numeroBigliettiVidimati++;
+		em.getTransaction().begin();
+		em.merge(this);
+		em.getTransaction().commit();
+	}
+>>>>>>> Stashed changes
 
 	@Override
 	public String toString() {

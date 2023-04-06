@@ -50,7 +50,7 @@ public class MezzoDAO {
 		System.out.println("Autobus eliminato!");
 	};
 
-	public static Mezzo findMezzo(Mezzo m) {
+	public static Mezzo findMezzo(int m) {
 		em.getTransaction().begin();
 		Mezzo e = em.find(Mezzo.class, m);
 		em.getTransaction().commit();
