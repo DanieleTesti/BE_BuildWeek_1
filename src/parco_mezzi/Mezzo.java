@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import biglietto.Biglietto;
+import utils.JpaUtil;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -193,14 +195,23 @@ public abstract class Mezzo {
 	}
 
 	public void vidimaBiglietto(Biglietto b) {
-		b.setVidimato(!b.getVidimato());
-		System.out.println("Biglietto vidimato");
-		IncContatoreBiglietti();
-	}
+		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
-	public void IncContatoreBiglietti() {
-		this.numeroBigliettiVidimati++;
-	}
+        b.setVidimato(!b.getVidimato());
+        System.out.println("Biglietto vidimato");
+        em.getTransaction().begin();
+        em.merge(b);
+        em.getTransaction().commit();
+        IncContatoreBiglietti();
+    }
+    public void IncContatoreBiglietti() {
+    	EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+
+        this.numeroBigliettiVidimati++;
+        em.getTransaction().begin();
+        em.merge(this);
+        em.getTransaction().commit();
+    }
 
 	@Override
 	public String toString() {
