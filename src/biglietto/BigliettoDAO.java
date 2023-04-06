@@ -18,9 +18,7 @@ public class BigliettoDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	public static void removeBiglietto(Biglietto e) {

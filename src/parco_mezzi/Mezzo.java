@@ -10,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import biglietto.Biglietto;
 
@@ -31,6 +33,8 @@ public abstract class Mezzo {
 	private LocalDate inizio_servizio;
 	private LocalDate fine_servizio;
 	private int numeroBigliettiVidimati;
+	@ManyToOne
+	private Biglietto biglietto;
 	
 
 	// costruttore vuoto

@@ -26,8 +26,7 @@ public class Biglietto {
 	private Rivenditore_autorizzato rivenditore;
 	private LocalDate data_emissione;
 	private boolean bigliettoVidimato = false;
-
-
+	
 	public Biglietto() {
 
 	}
