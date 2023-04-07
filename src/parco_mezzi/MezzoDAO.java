@@ -1,8 +1,8 @@
 package parco_mezzi;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
-import utente.Utente;
 import utils.JpaUtil;
 
 public class MezzoDAO {
@@ -52,19 +52,18 @@ public class MezzoDAO {
 	};
 
 
-	public static Mezzo findMezzo(Integer id) {
+	public static Mezzo findMezzo(Long id) {
 		em.getTransaction().begin();
 		Mezzo e = em.find(Mezzo.class, id);
 		em.getTransaction().commit();
 		return e;
 	}
 
-	// STESSO METODO MA FINDMEZZO DA ERRORE
-
-	public static Utente findUtente(Integer id) {
-		em.getTransaction().begin();
-		Utente e = em.find(Utente.class, id);
-		em.getTransaction().commit();
-		return e;
+	public static void bigliettiVidimati(Mezzo mezzo) {
+		Query q = em.createQuery("SELECT b FROM Biglietto WHERE b.mezzo = :mezzo");
+		q.setParameter("mezzo", mezzo);
+		q.getResultList().forEach(b -> System.out.println(b));
 	}
+
+
 }

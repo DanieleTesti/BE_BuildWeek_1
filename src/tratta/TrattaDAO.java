@@ -22,9 +22,9 @@ public class TrattaDAO {
 		}
 	}
 
-	public static Tratta findTratta(Integer id) {
+	public static Tratta findTratta(long l) {
 		em.getTransaction().begin();
-		Tratta e = em.find(Tratta.class, id);
+		Tratta e = em.find(Tratta.class, l);
 		em.getTransaction().commit();
 		return e;
 	}

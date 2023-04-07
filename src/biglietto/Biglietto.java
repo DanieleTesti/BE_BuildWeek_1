@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import parco_mezzi.Mezzo;
 import rivenditore.Rivenditore_autorizzato;
 import utente.Utente;
 
@@ -25,6 +26,8 @@ public class Biglietto {
 	private Rivenditore_autorizzato rivenditore;
 	private LocalDate data_emissione;
 	private boolean bigliettoVidimato = false;
+	@ManyToOne
+	private Mezzo mezzo;
 
 	public Biglietto() {
 
@@ -66,6 +69,14 @@ public class Biglietto {
 		this.data_emissione = data_emissione;
 	}
 
+	public Mezzo getMezzo() {
+		return mezzo;
+	}
+
+	public void setMezzo(Mezzo mezzo) {
+		this.mezzo = mezzo;
+	}
+
 	public void setVidimato(boolean vidimato) {
 		this.bigliettoVidimato = vidimato;
 	}
@@ -76,8 +87,9 @@ public class Biglietto {
 
 	@Override
 	public String toString() {
-		return "Biglietto [id=" + id + ", utente=" + utente + ", rivenditore=" + rivenditore
-				+ ", data_emissione=" + data_emissione + ", bigliettoVidimato=" + bigliettoVidimato + "]";
+		return "Biglietto [id=" + id + ", scaduto=" + scaduto + ", utente=" + utente + ", rivenditore=" + rivenditore
+				+ ", data_emissione=" + data_emissione + ", bigliettoVidimato=" + bigliettoVidimato + ", mezzo=" + mezzo
+				+ "]";
 	}
 
 }

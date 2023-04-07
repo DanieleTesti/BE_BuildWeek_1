@@ -61,7 +61,6 @@ public class RivenditoreDAO {
 
 
 	public static void conta(Rivenditore_autorizzato id) {
-
 		Query q = em.createQuery("SELECT COUNT(b) FROM Biglietto b Where b.rivenditore = :id ");
 		// Query q = em.createNamedQuery("Biglietto.findAll");
 		q.setParameter("id", id);

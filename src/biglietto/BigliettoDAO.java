@@ -35,6 +35,17 @@ public class BigliettoDAO {
         return e;
     }
 	
+	public static Biglietto updateTicket(Integer id) {
+		em.getTransaction().begin();
+		Biglietto e = em.find(Biglietto.class, id);
+		// em.merge(tp);
+		em.getTransaction().commit();
+		System.out.println("Biglietto aggiornato");
+		return e;
+	}
+
+
+
 	/*public static int findBigliettiVidimati() {
 		   	
 	    Query q = em.createQuery("SELECT COUNT b FROM Biglietto b WHERE b.bigliettoVidimato = :t ");

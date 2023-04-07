@@ -22,7 +22,7 @@ public class Tram extends Mezzo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Tram [capienza=" + capienza + "]";
+		return "Tram " + super.toString() + "[capienza=" + capienza + "]";
 	}
 
 }

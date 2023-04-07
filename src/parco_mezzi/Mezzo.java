@@ -34,9 +34,9 @@ public abstract class Mezzo {
 	private LocalDate fine_manutenzione;
 	private LocalDate inizio_servizio;
 	private LocalDate fine_servizio;
-	private int numeroBigliettiVidimati = 0;
-	@ManyToOne
-	private Biglietto biglietto;
+//	private int numeroBigliettiVidimati = 0;
+//	@ManyToOne
+//	private Biglietto biglietto;
 	
 	@ManyToOne
 	private Tratta tratta;
@@ -58,18 +58,15 @@ public abstract class Mezzo {
 	
 	// getters e setters
 
-	public Biglietto getBiglietto() {
-		return biglietto;
-	}
+//	public Biglietto getBiglietto() {
+//		return biglietto;
+//	}
+//
+//	public void setBiglietto(Biglietto biglietto) {
+//		this.biglietto = biglietto;
+//	}
 
-	public void setBiglietto(Biglietto biglietto) {
-		this.biglietto = biglietto;
-	}
 
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Boolean getInServizio() {
 		return inServizio;
@@ -127,13 +124,13 @@ public abstract class Mezzo {
 		return inServizio;
 	}
 
-	public int getNumeroBigliettiVidimati() {
-		return numeroBigliettiVidimati;
-	}
-
-	public void setNumeroBigliettiVidimati(int numeroBigliettiVidimati) {
-		this.numeroBigliettiVidimati = numeroBigliettiVidimati;
-	}
+//	public int getNumeroBigliettiVidimati() {
+//		return numeroBigliettiVidimati;
+//	}
+//
+//	public void setNumeroBigliettiVidimati(int numeroBigliettiVidimati) {
+//		this.numeroBigliettiVidimati = numeroBigliettiVidimati;
+//	}
 
 	// cambio stato del servizio (in servizio - manutenzione)
 	public void setServizio(Boolean servizio) {
@@ -188,30 +185,36 @@ public abstract class Mezzo {
 		return p;
 	}
 
-	public void vidimaBiglietto(Biglietto b) {
+
+	public void vidimaBiglietto(Biglietto b, Mezzo m) {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
-        b.setVidimato(!b.getVidimato());
-        System.out.println("Biglietto vidimato");
-        em.getTransaction().begin();
-        em.merge(b);
-        em.getTransaction().commit();
-        IncContatoreBiglietti();
-    }
-    public void IncContatoreBiglietti() {
-    	EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		b.setVidimato(!b.getVidimato());
+		// m.getId();
+		System.out.println(m);
+		System.out.println(b);
+		b.setMezzo(m);
+		System.out.println("Biglietto vidimato");
+		em.getTransaction().begin();
+		em.merge(b);
+		em.getTransaction().commit();
+		// IncContatoreBiglietti();
+	}
 
-        this.numeroBigliettiVidimati++;
-        em.getTransaction().begin();
-        em.merge(this);
-        em.getTransaction().commit();
-    }
+//	public void IncContatoreBiglietti() {
+//		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+//
+//		this.numeroBigliettiVidimati++;
+//		em.getTransaction().begin();
+//		em.merge(this);
+//		em.getTransaction().commit();
+//	}
     
 
 
 	@Override
 	public String toString() {
-		return "Mezzo [id=" + id + ", inServizio=" + inServizio + ", periodo_servizio=" + periodo_servizio
+		return "[id=" + id + ", inServizio=" + inServizio + ", periodo_servizio=" + periodo_servizio
 				+ ", periodo_manutenzione=" + periodo_manutenzione + ", inizio_manutenzione=" + inizio_manutenzione
 				+ ", fine_manutenzione=" + fine_manutenzione + ", inizio_servizio=" + inizio_servizio
 				+ ", fine_servizio=" + fine_servizio + "]";

@@ -9,13 +9,13 @@ import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
 import parco_mezzi.Autobus;
+import parco_mezzi.MezzoDAO;
 import parco_mezzi.Tram;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
 import rivenditore.Rivenditore_autorizzato;
 import tessera.Tessera;
 import tratta.Tratta;
-import tratta.TrattaDAO;
 import utente.Utente;
 import utente.UtenteDAO;
 import utils.JpaUtil;
@@ -64,10 +64,8 @@ public class Main {
 		// AbbonamentoDAO.salvaAbbonamento(abb1);
 
 		// CREAZIONE NUOVI BIGLIETTI
-//		Biglietto b1 = new Biglietto();
-//		b1.setData_emissione(LocalDate.of(2023, 4, 4));
-//		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
-//		BigliettoDAO.salvaBiglietto(b1);
+
+		// BigliettoDAO.salvaBiglietto(b1);
 		
 
 //		Biglietto b2 = new Biglietto();
@@ -93,10 +91,10 @@ public class Main {
 		a1.setInizio_manutenzione(LocalDate.of(2023, 2, 10));
 		a1.setFine_manutenzione(LocalDate.of(2023, 12, 30)); // <-- mi aspetto 10 mesi e 20 giorni
 		
-		//MezzoDAO.salvaAutobus(a1);
+		// MezzoDAO.salvaAutobus(a1);
 		// a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
 
-		;
+
 		// System.out.println(a.toString());
 		//System.out.println(b1.getVidimato());
 		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(7));
@@ -115,41 +113,47 @@ public class Main {
 		//AbbonamentoDAO.salvaAbbonamento(abb2);
 
 		Tram tram1 = new Tram();
+		tram1.setServizio(true);
 		// MezzoDAO.salvaTram(tram1);
 
 		// DOBBIAMO PRENDERE L'ID DEL TRAM/AUTOBUS E METTERLO PER SALVARE I BIGLIETTI
 
-		// tram1.vidimaBiglietto(BigliettoDAO.findBiglietto(5));
+		// tram1.vidimaBiglietto(BigliettoDAO.findBiglietto(1));
 
-		Autobus autobus1 = new Autobus();
-		// MezzoDAO.salvaAutobus(autobus1);
-		// System.out.println(MezzoDAO.findMezzo(tram1));
+		// System.out.println(MezzoDAO.findMezzo(1l));
 
-		// ***//NON FUNZIONA E DA FAR VEDERE A EMANUELE
 		// RivenditoreDAO.conta(RivenditoreDAO.findRivenditore(1));
 
 
+		Biglietto b1 = new Biglietto();
+		b1.setData_emissione(LocalDate.of(2023, 4, 5));
+		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
+		b1.setMezzo(MezzoDAO.findMezzo(2l));
+		// BigliettoDAO.updateTicket(4);
+		// BigliettoDAO.salvaBiglietto(b1);
+		// System.out.println();
+
+		// tram1.vidimaBiglietto(BigliettoDAO.findBiglietto(2), MezzoDAO.findMezzo(2l));
 //		 MezzoDAO.salvaAutobus(a1);
 //		 MezzoDAO.salvaTram(tram1);
 		
+		// NON FUNZIONA
+		// MezzoDAO.bigliettiVidimati(MezzoDAO.findMezzo(3l));
+
 		Tratta tratta1 = new Tratta("Termini", "Ciampino", 120);
-//		tratta1.setZonaPartenza("Termini");
-//		tratta1.setCapolinea("Fiumicino");
-//		tratta1.setnPercorrenzaTratta(120);
 		// TrattaDAO.saveTratta(tratta1);
 
 		// TrattaDAO.findTratta(8);
-		System.out.println(TrattaDAO.findTratta(10));
-		// ***//NON FUNZIONA E DA FAR VEDERE A EMANUELE
+		// System.out.println(TrattaDAO.findTratta(10l));
+
 		// AbbonamentoDAO.validitaAbb(AbbonamentoDAO.findTessera(1));
 
-		// ----> a1.addTratta(findTratta(t1)); <--- teorico da implementare
 		
+
 		// Mezzo.setPeriodoServizio(a1.getInizio_servizio(), a1.getFine_servizio());
 		// Mezzo.setPeriodoManutenzione(a1.getInizio_manutenzione(),
 		// a1.getFine_manutenzione());
 
-		
 	}
 
 }
