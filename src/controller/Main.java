@@ -154,6 +154,16 @@ public class Main {
 		// Mezzo.setPeriodoManutenzione(a1.getInizio_manutenzione(),
 		// a1.getFine_manutenzione());
 
+		Abbonamento abb13 = new Abbonamento();
+		abb13.setData_inizio_abbonamento(LocalDate.of(2023, 3, 07));		
+		abb13.setTipologia_abbonamento(Tipologia_abbonamento.Settimanale);
+		//abb11.setData_fine_abbonamento();
+		abb13.setTessera(AbbonamentoDAO.findTessera(2));
+		abb13.setRivenditore(RivenditoreDAO.findRivenditore(2));
+	//abb11.setData_fine_abbonamento()
+		AbbonamentoDAO.calcolaFineAbb(abb13);	
+		AbbonamentoDAO.salvaAbbonamento(abb13);
+		
 	}
 
 }
