@@ -34,11 +34,8 @@ public abstract class Mezzo {
 	private LocalDate fine_manutenzione;
 	private LocalDate inizio_servizio;
 	private LocalDate fine_servizio;
-//	private int numeroBigliettiVidimati = 0;
-//	@ManyToOne
-//	private Biglietto biglietto;
 	
-	@ManyToOne
+	@ManyToOne 
 	private Tratta tratta;
 	
 
@@ -171,18 +168,12 @@ public abstract class Mezzo {
 		}
 	}
 
-	public static Period setPeriodoServizio(LocalDate inizio, LocalDate fine) {
-		Period p = Period.between(inizio, fine);
-		System.out.println("The Period between the start and end date of service is: " + p.getDays() + " days and "
-				+ p.getMonths() + " months.");
-		return p;
+	public void setPeriodoServizio(Period p) {
+		this.periodo_servizio = p;
 	}
 
-	public static Period setPeriodoManutenzione(LocalDate inizio, LocalDate fine) {
-		Period p = Period.between(inizio, fine);
-		System.out.println("The Period between the start and end date of maintainance is: " + p.getDays() + " days and "
-				+ p.getMonths() + " months.");
-		return p;
+	public void setPeriodoManutenzione(Period p) {
+		this.periodo_manutenzione = p;
 	}
 
 
@@ -214,9 +205,9 @@ public abstract class Mezzo {
 
 	@Override
 	public String toString() {
-		return "[id=" + id + ", inServizio=" + inServizio + ", periodo_servizio=" + periodo_servizio
+		return "Mezzo [id=" + id + ", inServizio=" + inServizio + ", periodo_servizio=" + periodo_servizio
 				+ ", periodo_manutenzione=" + periodo_manutenzione + ", inizio_manutenzione=" + inizio_manutenzione
 				+ ", fine_manutenzione=" + fine_manutenzione + ", inizio_servizio=" + inizio_servizio
-				+ ", fine_servizio=" + fine_servizio + "]";
+				+ ", fine_servizio=" + fine_servizio + ", tratta=" + tratta + "]";
 	}
 }

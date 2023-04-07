@@ -1,5 +1,7 @@
 package parco_mezzi;
 
+import java.time.Period;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -65,5 +67,22 @@ public class MezzoDAO {
 		q.getResultList().forEach(b -> System.out.println(b));
 	}
 
-
+	public static void calcolaPeriodoServizio(Mezzo m) {
+		//EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		Period p = Period.between(m.getInizio_servizio() , m.getFine_servizio());
+		System.out.println(p);
+		m.setPeriodo_servizio(p);
+		em.getTransaction().begin();
+		em.merge(m);
+		em.getTransaction().commit();
+	}
+	public static void calcolaPeriodoManutenzione(Mezzo m) {
+	//EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+	Period p = Period.between(m.getInizio_manutenzione() , m.getFine_manutenzione() );
+	System.out.println(p.toString());
+	m.setPeriodo_manutenzione(p);
+	em.getTransaction().begin();
+	em.merge(m);
+	em.getTransaction().commit();
+	}
 }

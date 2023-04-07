@@ -19,9 +19,6 @@ public class Biglietto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private boolean scaduto;
-	@ManyToOne
-	private Utente utente;
 	@ManyToOne
 	private Rivenditore_autorizzato rivenditore;
 	private LocalDate data_emissione;
@@ -35,22 +32,6 @@ public class Biglietto {
 
 	public Integer getId() {
 		return id;
-	}
-
-	public boolean isScaduto() {
-		return scaduto;
-	}
-
-	public void setScaduto(boolean scaduto) {
-		this.scaduto = scaduto;
-	}
-
-	public Utente getUtente() {
-		return utente;
-	}
-
-	public void setUtente(Utente utente) {
-		this.utente = utente;
 	}
 
 	public Rivenditore_autorizzato getRivenditore() {
@@ -87,7 +68,7 @@ public class Biglietto {
 
 	@Override
 	public String toString() {
-		return "Biglietto [id=" + id + ", scaduto=" + scaduto + ", utente=" + utente + ", rivenditore=" + rivenditore
+		return "Biglietto [id=" + id + ", rivenditore=" + rivenditore
 				+ ", data_emissione=" + data_emissione + ", bigliettoVidimato=" + bigliettoVidimato + ", mezzo=" + mezzo
 				+ "]";
 	}
