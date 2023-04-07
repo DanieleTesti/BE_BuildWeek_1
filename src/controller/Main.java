@@ -64,7 +64,7 @@ public class Main {
 		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Mensile);
 		abb1.setTessera(AbbonamentoDAO.findTessera(2));
 		abb1.setRivenditore(RivenditoreDAO.findRivenditore(2));
-		 AbbonamentoDAO.salvaAbbonamento(abb1);
+		// AbbonamentoDAO.salvaAbbonamento(abb1);
 
 		// CREAZIONE NUOVI BIGLIETTI
 		Biglietto b1 = new Biglietto();
@@ -152,6 +152,18 @@ public class Main {
 		// a1.getFine_manutenzione());
 
 		
-	}
+		//test validitaAbbonamento su AbbonamentoDAO
 
+	Abbonamento abb12 = new Abbonamento();
+	abb12.setData_inizio_abbonamento(LocalDate.of(2023, 2, 25));		
+	abb12.setTipologia_abbonamento(Tipologia_abbonamento.Mensile);
+	//abb11.setData_fine_abbonamento();
+	abb12.setTessera(AbbonamentoDAO.findTessera(2));
+	abb12.setRivenditore(RivenditoreDAO.findRivenditore(2));
+//abb11.setData_fine_abbonamento()
+	AbbonamentoDAO.fineAbb(abb12);
+	AbbonamentoDAO.updateAbbonamento(abb12);
+	AbbonamentoDAO.salvaAbbonamento(abb12);
+
+}
 }

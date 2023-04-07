@@ -37,11 +37,11 @@ public class Abbonamento {
 
 		public void setData_inizio_abbonamento(LocalDate data_inizio_abbonamento) {
 			this.data_inizio_abbonamento = data_inizio_abbonamento;
-			if (tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
-				this.data_fine_abbonamento = data_inizio_abbonamento.plusDays(7);
-			} else if (tipologia_abbonamento == Tipologia_abbonamento.Mensile) {
-				this.data_fine_abbonamento = data_inizio_abbonamento.plusMonths(1);
-			}
+//			if (tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
+//				this.data_fine_abbonamento = data_inizio_abbonamento.plusDays(7);
+//			} else if (tipologia_abbonamento == Tipologia_abbonamento.Mensile) {
+//				this.data_fine_abbonamento = data_inizio_abbonamento.plusMonths(1);
+//			}
 		}
 
 		public LocalDate getData_fine_abbonamento() {
@@ -49,7 +49,7 @@ public class Abbonamento {
 		}
 
 		public void setData_fine_abbonamento(LocalDate data_fine_abbonamento) {
-			this.data_fine_abbonamento = data_fine_abbonamento;
+			this.data_fine_abbonamento = data_fine_abbonamento;			
 		}
 
 		public Abbonamento() {
