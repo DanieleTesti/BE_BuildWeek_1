@@ -52,7 +52,7 @@ public class AbbonamentoDAO {
 	};
 
 	
-	public static void fineAbb(Abbonamento a) {
+	public static void calcolaFineAbb(Abbonamento a) {
 		System.out.println(a.getTipologia_abbonamento());
 		if( a.getTipologia_abbonamento().equals(Tipologia_abbonamento.Settimanale) ){
 			a.setData_fine_abbonamento(a.getData_inizio_abbonamento().plusDays(7));
@@ -62,7 +62,7 @@ public class AbbonamentoDAO {
 		} else {
 			System.out.println("Cambia lavoro");
 		}
-
+		updateAbbonamento(a);
 	}
 	
 	public static void validitaAbb(Tessera tessera) {
