@@ -18,6 +18,7 @@ import rivenditore.Rivenditore_autorizzato;
 import tessera.Tessera;
 import tessera.TesseraDAO;
 import tratta.Tratta;
+import tratta.TrattaDAO;
 import utente.Utente;
 import utente.UtenteDAO;
 import utils.JpaUtil;
@@ -69,34 +70,23 @@ public class Main {
 		// BigliettoDAO.updateTicket(4);
 		// BigliettoDAO.salvaBiglietto(b2);
 		
-		// **Creazione di un autobus**
-		// Imposto un periodo di servizio per un mezzo (formato: YYYY, M, D / inizio - fine)
+		// **Creazione di un autobus e periodo di servizio/manutenzione**
 		Autobus a1 = new Autobus();
 		a1.setServizio(a1.getInServizio());
 		a1.setInizio_servizio(LocalDate.of(2023, 2, 14));
-		a1.setFine_servizio(LocalDate.of(2023, 2, 15));
+		a1.setFine_servizio(LocalDate.of(2023, 2, 19));
 		a1.setInizio_manutenzione(LocalDate.of(2023, 2, 25));
-		a1.setFine_manutenzione(LocalDate.of(2023, 2, 27));
+		a1.setFine_manutenzione(LocalDate.of(2023, 3, 28));
 		MezzoDAO.salvaAutobus(a1);
-
 		MezzoDAO.calcolaPeriodoServizio(a1);
 		MezzoDAO.calcolaPeriodoManutenzione(a1);
 		
-		// METODO PER VIDIMARE I BIGLIETTI DEFINITIVO
-		//a1.vidimaBiglietto(BigliettoDAO.findBiglietto(5));
-				
-		// System.out.println(a.toString());
-		//System.out.println(b1.getVidimato());
-		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(7));
+		// **Vidimazione dei biglietti**
+		//a1.vidimaBiglietto(BigliettoDAO.findBiglietto(1), MezzoDAO.findMezzo(1l));	
 
-	
 		
-		// test abbonamento valido
-		//Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Mensile, AbbonamentoDAO.findTessera(2),
-				//RivenditoreDAO.findRivenditore(1), LocalDate.of(2023, 4, 5));
-
-		//AbbonamentoDAO.salvaAbbonamento(abb2);
-
+		
+		
 		Tram tram1 = new Tram();
 		tram1.setServizio(true);
 		// MezzoDAO.salvaTram(tram1);
@@ -119,8 +109,9 @@ public class Main {
 		// NON FUNZIONA
 		// MezzoDAO.bigliettiVidimati(MezzoDAO.findMezzo(3l));
 
+		// **Creo una tratta**
 		Tratta tratta1 = new Tratta("Termini", "Ciampino", 120);
-		// TrattaDAO.saveTratta(tratta1);
+		//TrattaDAO.saveTratta(tratta1);
 
 		// TrattaDAO.findTratta(8);
 		// System.out.println(TrattaDAO.findTratta(10l));

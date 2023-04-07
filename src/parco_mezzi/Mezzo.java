@@ -28,8 +28,8 @@ public abstract class Mezzo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Boolean inServizio = true;
-	private Period periodo_servizio;
-	private Period periodo_manutenzione;
+	private int periodo_servizio;
+	private int periodo_manutenzione;
 	private LocalDate inizio_manutenzione;
 	private LocalDate fine_manutenzione;
 	private LocalDate inizio_servizio;
@@ -77,11 +77,11 @@ public abstract class Mezzo {
 		this.inServizio = inServizio;
 	}
 
-	public void setPeriodo_servizio(Period periodo_servizio) {
+	public void setPeriodo_servizio(int periodo_servizio) {
 		this.periodo_servizio = periodo_servizio;
 	}
 
-	public void setPeriodo_manutenzione(Period periodo_manutenzione) {
+	public void setPeriodo_manutenzione(int periodo_manutenzione) {
 		this.periodo_manutenzione = periodo_manutenzione;
 	}
 
@@ -138,11 +138,11 @@ public abstract class Mezzo {
 		registroDataServizio(servizio);
 	}
 
-	public Period getPeriodo_servizio() {
+	public int getPeriodo_servizio() {
 		return periodo_servizio;
 	}
 
-	public Period getPeriodo_manutenzione() {
+	public int getPeriodo_manutenzione() {
 		return periodo_manutenzione;
 	}
 
@@ -168,11 +168,11 @@ public abstract class Mezzo {
 		}
 	}
 
-	public void setPeriodoServizio(Period p) {
+	public void setPeriodoServizio(int p) {
 		this.periodo_servizio = p;
 	}
 
-	public void setPeriodoManutenzione(Period p) {
+	public void setPeriodoManutenzione(int p) {
 		this.periodo_manutenzione = p;
 	}
 
