@@ -17,9 +17,7 @@ public class TrattaDAO {
 		} catch (Exception ex) {
 			System.out.println(ex);
 			em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	public static Tratta findTratta(Integer id) {

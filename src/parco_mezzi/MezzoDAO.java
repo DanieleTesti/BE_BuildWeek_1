@@ -18,9 +18,7 @@ public class MezzoDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			em.getTransaction().rollback();
-		} finally {
-
-		}
+		} 
 	}
 
 	public static void salvaTram(Tram m) {
@@ -32,8 +30,6 @@ public class MezzoDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			em.getTransaction().rollback();
-		} finally {
-
 		}
 	}
 

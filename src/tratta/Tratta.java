@@ -9,12 +9,14 @@ import javax.persistence.Id;
 public class Tratta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String zonaPartenza;
 	private String capolinea;
 	private double mediaTempoPercorrenza;
 	private Integer nPercorrenzaTratta;
 	
+	public Tratta() {
+	}
 
 	public Tratta(String zonaPartenza, String capolinea, Integer nPercorrenzaTratta) {
 		super();
@@ -23,9 +25,7 @@ public class Tratta {
 		this.nPercorrenzaTratta = nPercorrenzaTratta;
 	}
 
-	public Tratta() {
-
-	}
+	
 
 	//getters e setters
 	

@@ -18,9 +18,7 @@ public class RivenditoreDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	public static void salvaDistributore(Distributore_Automatico da) {
@@ -32,9 +30,7 @@ public class RivenditoreDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 
