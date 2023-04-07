@@ -53,7 +53,6 @@ public class MezzoDAO {
 		System.out.println("Autobus eliminato!");
 	};
 
-
 	public static Mezzo findMezzo(Long id) {
 		em.getTransaction().begin();
 		Mezzo e = em.find(Mezzo.class, id);
@@ -68,32 +67,32 @@ public class MezzoDAO {
 	}
 
 	public static void calcolaPeriodoServizio(Mezzo m) {
-		//EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		// EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		Period p = Period.between(m.getInizio_servizio(), m.getFine_servizio());
-		System.out.println(p);
-        int buffer = p.getDays();
-        System.out.println(buffer);
-        int buffer2 = p.getMonths();
-        System.out.println(buffer2);
-        int total = buffer + (buffer2*30);
-        m.setPeriodo_servizio(total);
+		// System.out.println(p);
+		int buffer = p.getDays();
+		// System.out.println(buffer);
+		int buffer2 = p.getMonths();
+		// System.out.println(buffer2);
+		int total = buffer + (buffer2 * 30);
+		m.setPeriodo_servizio(total);
 		em.getTransaction().begin();
 		em.merge(m);
 		em.getTransaction().commit();
 	}
-	
+
 	public static void calcolaPeriodoManutenzione(Mezzo m) {
-	//EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-	Period p = Period.between(m.getInizio_manutenzione() , m.getFine_manutenzione());
-	System.out.println(p);
-    int buffer = p.getDays();
-    System.out.println(buffer);
-    int buffer2 = p.getMonths();
-    System.out.println(buffer2);
-    int total = buffer + (buffer2*30);
-    m.setPeriodo_manutenzione(total);
-	em.getTransaction().begin();
-	em.merge(m);
-	em.getTransaction().commit();
+		// EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		Period p = Period.between(m.getInizio_manutenzione(), m.getFine_manutenzione());
+		// System.out.println(p);
+		int buffer = p.getDays();
+		// System.out.println(buffer);
+		int buffer2 = p.getMonths();
+		// System.out.println(buffer2);
+		int total = buffer + (buffer2 * 30);
+		m.setPeriodo_manutenzione(total);
+		em.getTransaction().begin();
+		em.merge(m);
+		em.getTransaction().commit();
 	}
 }

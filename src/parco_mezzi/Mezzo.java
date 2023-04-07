@@ -34,17 +34,16 @@ public abstract class Mezzo {
 	private LocalDate fine_manutenzione;
 	private LocalDate inizio_servizio;
 	private LocalDate fine_servizio;
-	
-	@ManyToOne 
+
+	@ManyToOne
 	private Tratta tratta;
-	
 
 	// costruttore vuoto
 	public Mezzo() {
 	}
-	
+
 	// metodi tratta/mezzo
-	
+
 	public void setTratta(Tratta tra) {
 		this.tratta = tra;
 	}
@@ -52,7 +51,7 @@ public abstract class Mezzo {
 	public Tratta getTratta() {
 		return tratta;
 	}
-	
+
 	// getters e setters
 
 //	public Biglietto getBiglietto() {
@@ -62,8 +61,6 @@ public abstract class Mezzo {
 //	public void setBiglietto(Biglietto biglietto) {
 //		this.biglietto = biglietto;
 //	}
-
-
 
 	public Boolean getInServizio() {
 		return inServizio;
@@ -176,7 +173,6 @@ public abstract class Mezzo {
 		this.periodo_manutenzione = p;
 	}
 
-
 	public void vidimaBiglietto(Biglietto b, Mezzo m) {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
@@ -200,8 +196,6 @@ public abstract class Mezzo {
 //		em.merge(this);
 //		em.getTransaction().commit();
 //	}
-    
-
 
 	@Override
 	public String toString() {

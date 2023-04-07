@@ -63,7 +63,7 @@ public class AbbonamentoDAO {
 
 	
 	public static void calcolaFineAbb(Abbonamento a) {
-		System.out.println(a.getTipologia_abbonamento());
+		// System.out.println(a.getTipologia_abbonamento());
 		if( a.getTipologia_abbonamento().equals(Tipologia_abbonamento.Settimanale) ){
 			a.setData_fine_abbonamento(a.getData_inizio_abbonamento().plusDays(7));
 			//System.out.println(a.getData_fine_abbonamento());
