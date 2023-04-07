@@ -76,8 +76,7 @@ public class AbbonamentoDAO {
 	}
 
 	public static void validitaAbb(Tessera tessera) {
-		Query q = em
-				.createQuery(
+		Query q = em.createQuery(
 						"SELECT a FROM Abbonamento a WHERE a.tessera = :id AND a.data_fine_abbonamento > current_date");
 		q.setParameter("id", tessera);
 		q.getResultList().forEach(a -> System.out.println(a));

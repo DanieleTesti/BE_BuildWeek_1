@@ -22,6 +22,13 @@ public class TrattaDAO {
 		}
 	}
 
+	public static void updateTratta(Tratta t) {
+		em.getTransaction().begin();
+		em.merge(t);
+		em.getTransaction().commit();
+		System.out.println("Tratta salvata");
+	}
+	
 	public static Tratta findTratta(long l) {
 		em.getTransaction().begin();
 		Tratta e = em.find(Tratta.class, l);
