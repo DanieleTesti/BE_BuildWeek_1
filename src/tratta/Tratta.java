@@ -64,16 +64,7 @@ public class Tratta {
 				+ "]";
 	}
 	
-// metodi custom
-	
-	//calcolo tempo di percorrenza di una tratta
-	
-	// calcolo tempo medio di percorrenza
-	
-	//numero di volte mezzo percorre una tratta
-	
-	//
-	
+
 
 
 }

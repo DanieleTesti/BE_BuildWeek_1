@@ -46,6 +46,35 @@ public class AbbonamentoDAO {
 		System.out.println("Abbonamento eliminato!");
 	};
 
+	public static void updateTessera(Tessera t) {
+		em.getTransaction().begin();
+		em.merge(t);
+		em.getTransaction().commit();
+		System.out.println("Tessera aggiornata correttamente!");
+	};
+
+
+	public static void updateAbbonamento(Abbonamento e) {
+		em.getTransaction().begin();
+		em.merge(e);
+		em.getTransaction().commit();
+		System.out.println("Abbonamento aggiornato correttamente!");
+	};
+
+	
+	public static void calcolaFineAbb(Abbonamento a) {
+		System.out.println(a.getTipologia_abbonamento());
+		if( a.getTipologia_abbonamento().equals(Tipologia_abbonamento.Settimanale) ){
+			a.setData_fine_abbonamento(a.getData_inizio_abbonamento().plusDays(7));
+			//System.out.println(a.getData_fine_abbonamento());
+		} else if(a.getTipologia_abbonamento().equals(Tipologia_abbonamento.Mensile)) {
+			a.setData_fine_abbonamento(a.getData_inizio_abbonamento().plusMonths(1));
+		} else {
+			System.out.println("Cambia lavoro");
+		}
+		updateAbbonamento(a);
+	}
+
 	public static void validitaAbb(Tessera tessera) {
 		Query q = em
 				.createQuery(
