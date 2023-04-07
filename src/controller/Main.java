@@ -33,8 +33,8 @@ public class Main {
 		u1.setCognome("Rossi");
 		u1.setNome("Mario");
 		// **Scommentare sotto per creare utente**
-		//UtenteDAO.salvaUtente(u1);
-		System.out.println("L'utente salvato è: " + UtenteDAO.findUtente(1));
+		// UtenteDAO.salvaUtente(u1);
+		// System.out.println("L'utente salvato è: " + UtenteDAO.findUtente(1));
 
 		// **Creazione nuova tessera**
 		Tessera t1 = new Tessera();
