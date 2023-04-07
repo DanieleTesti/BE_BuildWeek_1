@@ -36,12 +36,20 @@ public class AbbonamentoDAO {
 		em.getTransaction().commit();
 		return e;
 	}
+	
+	public static void updateTessera(Tessera t) {
+		em.getTransaction().begin();
+		em.merge(t);
+		em.getTransaction().commit();
+		System.out.println("Tessera aggiornata correttamente!");
+	};
+
 
 	public static void updateAbbonamento(Abbonamento e) {
 		em.getTransaction().begin();
 		em.merge(e);
 		em.getTransaction().commit();
-		System.out.println("Abbonamento eliminato!");
+		System.out.println("Abbonamento aggiornato correttamente!");
 	};
 
 	public static void removeAbbonamento(Abbonamento e) {
