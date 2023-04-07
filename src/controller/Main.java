@@ -8,16 +8,14 @@ import abbonamento.Abbonamento;
 import abbonamento.AbbonamentoDAO;
 import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
-import biglietto.BigliettoDAO;
 import parco_mezzi.Autobus;
-import parco_mezzi.Mezzo;
-import parco_mezzi.MezzoDAO;
 import parco_mezzi.Tram;
 import rivenditore.Distributore_Automatico;
 import rivenditore.RivenditoreDAO;
 import rivenditore.Rivenditore_autorizzato;
 import tessera.Tessera;
 import tratta.Tratta;
+import tratta.TrattaDAO;
 import utente.Utente;
 import utente.UtenteDAO;
 import utils.JpaUtil;
@@ -33,6 +31,8 @@ public class Main {
 		u1.setNome("Mario");
 //		System.out.println(u1.toString());
 		// UtenteDAO.salvaUtente(u1);
+
+		// System.out.println(MezzoDAO.findUtente(1));
 
 		Utente u2 = new Utente();
 		u2.setCognome("Flavio");
@@ -56,28 +56,29 @@ public class Main {
 //		RivenditoreDAO.salvaDistributore(da2);
 
 		// CREAZIONE NUOVI ABBONAMENTI
-		Abbonamento abb1 = new Abbonamento();
-		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 4, 1));
-		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Mensile);
-		abb1.setTessera(AbbonamentoDAO.findTessera(2));
-		abb1.setRivenditore(RivenditoreDAO.findRivenditore(2));
+//		Abbonamento abb1 = new Abbonamento();
+//		abb1.setData_inizio_abbonamento(LocalDate.of(2023, 4, 1));
+//		abb1.setTipologia_abbonamento(Tipologia_abbonamento.Mensile);
+//		abb1.setTessera(AbbonamentoDAO.findTessera(2));
+//		abb1.setRivenditore(RivenditoreDAO.findRivenditore(2));
 		// AbbonamentoDAO.salvaAbbonamento(abb1);
+
 		// CREAZIONE NUOVI BIGLIETTI
-		Biglietto b1 = new Biglietto();
-		b1.setData_emissione(LocalDate.of(2023, 4, 4));
-		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
+//		Biglietto b1 = new Biglietto();
+//		b1.setData_emissione(LocalDate.of(2023, 4, 4));
+//		b1.setRivenditore(RivenditoreDAO.findRivenditore(1));
 //		BigliettoDAO.salvaBiglietto(b1);
 		
 
-		Biglietto b2 = new Biglietto();
-		b2.setRivenditore(RivenditoreDAO.findRivenditore(2));
-		b2.setData_emissione(LocalDate.of(2023, 3, 20));
+//		Biglietto b2 = new Biglietto();
+//		b2.setRivenditore(RivenditoreDAO.findRivenditore(2));
+//		b2.setData_emissione(LocalDate.of(2023, 3, 20));
 		// BigliettoDAO.salvaBiglietto(b2);
 		Biglietto b3 = new Biglietto();
 		Biglietto b4 = new Biglietto();
 		Biglietto b5 = new Biglietto();
 
-		//BigliettoDAO.salvaBiglietto(b2);
+		// BigliettoDAO.salvaBiglietto(b2);
 //		BigliettoDAO.salvaBiglietto(b3);
 //		BigliettoDAO.salvaBiglietto(b4);
 //		BigliettoDAO.salvaBiglietto(b5);
@@ -94,7 +95,8 @@ public class Main {
 		
 		//MezzoDAO.salvaAutobus(a1);
 		// a1.vidimaBiglietto(b1); // <-- ci vidima il biglietto
-		// Mezzo a = MezzoDAO.findMezzo(4);
+
+		;
 		// System.out.println(a.toString());
 		//System.out.println(b1.getVidimato());
 		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(7));
@@ -102,13 +104,9 @@ public class Main {
 		// METODO PER VIDIMARE I BIGLIETTI DEFINITIVO
 		// a1.vidimaBiglietto(BigliettoDAO.findBiglietto(5));
 
-
-		Mezzo a = MezzoDAO.findMezzo(2);
-		System.out.println(a.toString());
-		
-		a1.vidimaBiglietto(BigliettoDAO.findBiglietto(1)); // <-- ci vidima il biglietto
-		//System.out.println(b1.getVidimato());
-		a1.vidimaBiglietto(BigliettoDAO.findBiglietto(2));
+//		a1.vidimaBiglietto(b3);
+//		a1.vidimaBiglietto(b4);
+//		a1.vidimaBiglietto(b5);
 		
 		// test abbonamento valido
 		Abbonamento abb2 = new Abbonamento(Tipologia_abbonamento.Mensile, AbbonamentoDAO.findTessera(2),
@@ -128,17 +126,23 @@ public class Main {
 		// System.out.println(MezzoDAO.findMezzo(tram1));
 
 		// ***//NON FUNZIONA E DA FAR VEDERE A EMANUELE
-		// RivenditoreDAO.conta(2);
+		// RivenditoreDAO.conta(RivenditoreDAO.findRivenditore(1));
+
 
 //		 MezzoDAO.salvaAutobus(a1);
 //		 MezzoDAO.salvaTram(tram1);
 		
-		Tratta tratta1 = new Tratta("Termini", "Fiumicino", 120);
+		Tratta tratta1 = new Tratta("Termini", "Ciampino", 120);
 //		tratta1.setZonaPartenza("Termini");
 //		tratta1.setCapolinea("Fiumicino");
 //		tratta1.setnPercorrenzaTratta(120);
 		// TrattaDAO.saveTratta(tratta1);
-		
+
+		// TrattaDAO.findTratta(8);
+		System.out.println(TrattaDAO.findTratta(10));
+		// ***//NON FUNZIONA E DA FAR VEDERE A EMANUELE
+		// AbbonamentoDAO.validitaAbb(AbbonamentoDAO.findTessera(1));
+
 		// ----> a1.addTratta(findTratta(t1)); <--- teorico da implementare
 		
 		// Mezzo.setPeriodoServizio(a1.getInizio_servizio(), a1.getFine_servizio());

@@ -2,6 +2,7 @@ package parco_mezzi;
 
 import javax.persistence.EntityManager;
 
+import utente.Utente;
 import utils.JpaUtil;
 
 public class MezzoDAO {
@@ -50,16 +51,19 @@ public class MezzoDAO {
 		System.out.println("Autobus eliminato!");
 	};
 
-	public static Mezzo findMezzo(int m) {
-		em.getTransaction().begin();
-		Mezzo e = em.find(Mezzo.class, m);
-		em.getTransaction().commit();
-		return e;
-	}
 
 	public static Mezzo findMezzo(Integer id) {
 		em.getTransaction().begin();
 		Mezzo e = em.find(Mezzo.class, id);
+		em.getTransaction().commit();
+		return e;
+	}
+
+	// STESSO METODO MA FINDMEZZO DA ERRORE
+
+	public static Utente findUtente(Integer id) {
+		em.getTransaction().begin();
+		Utente e = em.find(Utente.class, id);
 		em.getTransaction().commit();
 		return e;
 	}

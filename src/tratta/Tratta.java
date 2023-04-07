@@ -12,12 +12,10 @@ public class Tratta {
 	private Long id;
 	private String zonaPartenza;
 	private String capolinea;
-//	private double mediaTempoPercorrenza;
+	private double mediaTempoPercorrenza;
 	private Integer nPercorrenzaTratta;
 	
-//	@ManyToMany(mappedBy = "tratta", cascade = { CascadeType.ALL })
-//    private List<Mezzo> mezzi;
-	
+
 	public Tratta(String zonaPartenza, String capolinea, Integer nPercorrenzaTratta) {
 		super();
 		this.zonaPartenza = zonaPartenza;
@@ -35,7 +33,6 @@ public class Tratta {
 		return zonaPartenza;
 	}
 
-
 	public void setZonaPartenza(String zonaPartenza) {
 		this.zonaPartenza = zonaPartenza;
 	}
@@ -46,17 +43,25 @@ public class Tratta {
 		this.capolinea = capolinea;
 	}
 
-//	public double getMediaTempoPercorrenza() {
-//		return mediaTempoPercorrenza;
-//	}
-//	public void setMediaTempoPercorrenza(double mediaTempoPercorrenza) {
-//		this.mediaTempoPercorrenza = mediaTempoPercorrenza;
-//	}
+	public double getMediaTempoPercorrenza() {
+		return mediaTempoPercorrenza;
+	}
+
+	public void setMediaTempoPercorrenza(double mediaTempoPercorrenza) {
+		this.mediaTempoPercorrenza = mediaTempoPercorrenza;
+	}
 	public Integer getnPercorrenzaTratta() {
 		return nPercorrenzaTratta;
 	}
 	public void setnPercorrenzaTratta(Integer nPercorrenzaTratta) {
 		this.nPercorrenzaTratta = nPercorrenzaTratta;
+	}
+
+	@Override
+	public String toString() {
+		return "Tratta [id=" + id + ", zonaPartenza=" + zonaPartenza + ", capolinea=" + capolinea
+				+ ", mediaTempoPercorrenza=" + mediaTempoPercorrenza + ", nPercorrenzaTratta=" + nPercorrenzaTratta
+				+ "]";
 	}
 	
 // metodi custom

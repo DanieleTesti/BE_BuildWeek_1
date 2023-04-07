@@ -59,10 +59,15 @@ public class RivenditoreDAO {
 		return e;
 	}
 
-	public static void conta(int id) {
-		Query q = em.createQuery("SELECT COUNT(*) FROM Biglietto b WHERE b.rivenditore_id = :id");
+
+	public static void conta(Rivenditore_autorizzato id) {
+
+		Query q = em.createQuery("SELECT COUNT(b) FROM Biglietto b Where b.rivenditore = :id ");
+		// Query q = em.createNamedQuery("Biglietto.findAll");
 		q.setParameter("id", id);
-		System.out.println("Biglietti e abbonamenti emessi " + q);
+		//System.out.println("Biglietti e abbonamenti emessi " + q.getSingleResult());
+		q.getResultList().forEach(b -> System.out.println(b));
+			
 	}
 
 }

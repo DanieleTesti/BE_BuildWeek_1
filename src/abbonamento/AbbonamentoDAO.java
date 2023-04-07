@@ -1,6 +1,7 @@
 package abbonamento;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import tessera.Tessera;
 import utils.JpaUtil;
@@ -22,6 +23,13 @@ public class AbbonamentoDAO {
 		}
 	}
 
+	public static Abbonamento findAbbonamento(Integer id) {
+		em.getTransaction().begin();
+		Abbonamento e = em.find(Abbonamento.class, id);
+		em.getTransaction().commit();
+		return e;
+	}
+
 	public static Tessera findTessera(Integer id) {
 		em.getTransaction().begin();
 		Tessera e = em.find(Tessera.class, id);
@@ -37,4 +45,13 @@ public class AbbonamentoDAO {
 		em.getTransaction().commit();
 		System.out.println("Abbonamento eliminato!");
 	};
+
+	public static void validitaAbb(Tessera tessera) {
+		Query q = em
+				.createQuery(
+						"SELECT a FROM Abbonamento a WHERE a.tessera = :id AND a.data_fine_abbonamento > current_date");
+		q.setParameter("id", tessera);
+		q.getResultList().forEach(a -> System.out.println(a));
+
+	}
 }

@@ -27,6 +27,7 @@ public class BigliettoDAO {
 		em.getTransaction().commit();
 		System.out.println("Biglietto eliminato!");
 	};
+	
 	public static Biglietto findBiglietto(Integer m) {
         em.getTransaction().begin();
         Biglietto e = em.find(Biglietto.class, m);

@@ -9,7 +9,6 @@ public class JpaUtil {
 
 	static {
 		try {
-			System.out.println("JpaUtils");
 			entityManagerFactory = Persistence
 					.createEntityManagerFactory("BE_BuildWeek_1");
 		} catch (Throwable ex) {

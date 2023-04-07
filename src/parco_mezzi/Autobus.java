@@ -22,7 +22,7 @@ public class Autobus extends Mezzo implements Serializable {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Autobus [capienza=" + capienza + "]";
+		return "Tram [capienza=" + capienza + "]";
 	}
 
 }

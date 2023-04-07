@@ -18,7 +18,7 @@ public class Biglietto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	// private boolean scaduto;
+	private boolean scaduto;
 	@ManyToOne
 	private Utente utente;
 	@ManyToOne
@@ -34,13 +34,13 @@ public class Biglietto {
 		return id;
 	}
 
-//	public boolean isScaduto() {
-//		return scaduto;
-//	}
-//
-//	public void setScaduto(boolean scaduto) {
-//		this.scaduto = scaduto;
-//	}
+	public boolean isScaduto() {
+		return scaduto;
+	}
+
+	public void setScaduto(boolean scaduto) {
+		this.scaduto = scaduto;
+	}
 
 	public Utente getUtente() {
 		return utente;

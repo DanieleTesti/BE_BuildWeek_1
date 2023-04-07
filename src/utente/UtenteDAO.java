@@ -11,10 +11,9 @@ public class UtenteDAO {
 
 	public static Utente salvaUtente(Utente u) {
 		try {
-//			em.getTransaction().begin();
-//			em.persist(u);
-//			em.getTransaction().commit();
-			System.out.println(em);
+			em.getTransaction().begin();
+			em.persist(u);
+			em.getTransaction().commit();
 			System.out.println("Utente Salvato");
 		} catch (Exception e) {
 			System.out.println(e);
